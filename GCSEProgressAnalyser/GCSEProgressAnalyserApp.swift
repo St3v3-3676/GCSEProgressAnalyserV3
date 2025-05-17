@@ -10,10 +10,8 @@ import SwiftData
 
 @main
 struct GCSEProgressAnalyserApp: App {
-    @EnvironmentObject var calculatorFormView: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorFormView: CSGradeCalculatorViewModel
     
-    @State private var appWideViewModel = AppWideViewModel()
-    @State private var gradeBoundaryViewModel = GradeBoundaryViewerViewModel()
     @State private var studentDetailsSectionViewModel =  StudentDetailsSectionViewModel()
     @State private var subjectAndBoundaryPickerViewModel = SubjectAndBoundaryPickerViewModel()
     
@@ -23,10 +21,8 @@ struct GCSEProgressAnalyserApp: App {
         WindowGroup {
             //AuthenticationView()
             ContentView()
-                .environmentObject(GradeCalculatorViewModel())
+                .environmentObject(CSGradeCalculatorViewModel())
                 .modelContainer(for: ResultsData.self)
-                .environment(appWideViewModel)
-                .environment(gradeBoundaryViewModel)
                 .environment(studentDetailsSectionViewModel)
                 .environment(subjectAndBoundaryPickerViewModel)
         }

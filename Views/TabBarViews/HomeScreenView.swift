@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(AppWideViewModel.self) var appWideViewModel
     var body: some View {
         ZStack {
             Image(Images.yellowLogo.imageName)
@@ -17,7 +16,7 @@ struct HomeView: View {
                 .clipShape(Circle())
                 .shadow(radius: ShadowRadiusValues.large.radiusValue)
                 .padding(10)
-                .position(x: appWideViewModel.getScreenWidth() / 2, y: appWideViewModel.getScreenHeight() * 0.25)
+                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() * 0.25)
  
             
             
@@ -27,7 +26,7 @@ struct HomeView: View {
                 .clipShape(Circle())
                 .shadow(radius: ShadowRadiusValues.large.radiusValue)
                 .padding(10)
-                .position(x: appWideViewModel.getScreenWidth() / 2, y: appWideViewModel.getScreenHeight() * 0.57)
+                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() * 0.57)
 
             
             Image(Images.appLogo.imageName)
@@ -36,7 +35,7 @@ struct HomeView: View {
                 .clipShape(Circle())
                 .shadow(radius: ShadowRadiusValues.large.radiusValue)
                 .padding(10)
-                .position(x: appWideViewModel.getScreenWidth() / 2, y: appWideViewModel.getScreenWidth() / 1.1)
+                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenWidth() / 1.1)
             
 
         }
@@ -45,6 +44,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }

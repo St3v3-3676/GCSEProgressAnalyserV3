@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GradeCalculatorInstructionsView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     
     var body: some View {
        ZStack {
@@ -20,25 +20,25 @@ struct GradeCalculatorInstructionsView: View {
         }
         
         ZStack {
-            Text(InstructionsText.instructions1.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions1.instructiontext)
 
                 
-            Text(InstructionsText.instructions2.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions2.instructiontext)
 
             
-            Text(InstructionsText.instructions3.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions3.instructiontext)
          
             
-            Text(InstructionsText.instructions4.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions4.instructiontext)
   
             
-            Text(InstructionsText.instructions5.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions5.instructiontext)
 
             
-            Text(InstructionsText.instructions6.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions6.instructiontext)
 
             
-            Text(InstructionsText.instructions7.instructiontext)
+            Text(CalculatorInstructionsStrings.instructions7.instructiontext)
 
             
         }
@@ -58,5 +58,5 @@ struct GradeCalculatorInstructionsView: View {
 
 #Preview {
     GradeCalculatorInstructionsView()
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }

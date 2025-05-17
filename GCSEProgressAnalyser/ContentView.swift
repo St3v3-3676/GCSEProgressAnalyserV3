@@ -21,9 +21,7 @@ struct ContentView: View {
 }
 #Preview {
     ContentView()
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(SubjectAndBoundaryPickerViewModel())
 }

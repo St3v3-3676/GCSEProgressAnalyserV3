@@ -42,7 +42,7 @@ import SwiftUI
  }
  
  struct CustomExamMarksPickerView<Content: View>: View {
-     @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+     @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
  
      let content: Content
  

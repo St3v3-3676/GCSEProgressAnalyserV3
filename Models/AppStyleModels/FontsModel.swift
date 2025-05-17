@@ -47,4 +47,17 @@ enum Fonts {
             return Font.system(size: 26, weight: .regular)
         }
     }
+    
+    var imageFont : Font {
+        switch self {
+        case .extraSmall:
+            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .semibold)
+        case .standard:
+            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .regular)
+        case .large:
+            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .regular)
+        case .extraLarge:
+            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .regular)
+        }
+    }
 }

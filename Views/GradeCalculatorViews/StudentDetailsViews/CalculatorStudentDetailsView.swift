@@ -16,28 +16,28 @@ struct CalculatorStudentDetailsView: View {
 
     var body: some View {
         VStack {
-            TitleView(viewTitle: ViewNames.studentDetails.viewName)
+            TitleView(viewTitle: ViewNameStrings.studentDetails.viewName)
             
             GradeCalculatorStudentDetailsTextFieldLabel(
                 textFieldName: TextFieldNames.firstnameTextFieldName.textFieldName)
-            .padding(.trailing, CGFloat(studentDetailsSectionViewModel.getTextFieldPaddingValue(textFieldName:TextFieldNames.firstnameTextFieldName.textFieldName)))
+            .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName:TextFieldNames.firstnameTextFieldName.textFieldName)))
             .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
             
             StudentDetailsFirstnameTextFieldView(studentDetailsSection: StudentDetailsSectionViewModel())
             
             GradeCalculatorStudentDetailsTextFieldLabel(textFieldName: TextFieldNames.surnameTextFieldName.textFieldName)
-                .padding(.trailing, CGFloat(studentDetailsSectionViewModel.getTextFieldPaddingValue(textFieldName: TextFieldNames.surnameTextFieldName.textFieldName)))
+                .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldNames.surnameTextFieldName.textFieldName)))
                 .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
             StudentDetailsSurnameTextFieldView()
             
             GradeCalculatorStudentDetailsTextFieldLabel(textFieldName: TextFieldNames.classnameTextFieldName.textFieldName)
-                .padding(.trailing, CGFloat(studentDetailsSectionViewModel.getTextFieldPaddingValue(textFieldName: TextFieldNames.classnameTextFieldName.textFieldName) ))
+                .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldNames.classnameTextFieldName.textFieldName) ))
                 .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
             
             StudentDetailsClassNameTextFieldView(studentSectionViewModel: StudentDetailsSectionViewModel())
             
             GradeCalculatorStudentDetailsTextFieldLabel(textFieldName: TextFieldNames.targetGradeTextFieldName.textFieldName)
-                .padding(.trailing, CGFloat(studentDetailsSectionViewModel.getTextFieldPaddingValue(textFieldName: TextFieldNames.targetGradeTextFieldName.textFieldName)))
+                .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldNames.targetGradeTextFieldName.textFieldName)))
                 .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
             
             StudentDetailsTargetGradeTextFieldView()
@@ -49,8 +49,6 @@ struct CalculatorStudentDetailsView: View {
 
 #Preview {
     CalculatorStudentDetailsView()
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
 }

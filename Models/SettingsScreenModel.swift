@@ -9,5 +9,4 @@ import Foundation
 
 struct SettingsScreenModel {
     var darkModeEnabled = false
-    var darkModeText = "Dark Mode On/Off"
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct CalculatorInstructionsNavigationView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var gradeCalculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var gradeCalculatorViewModel: CSGradeCalculatorViewModel
  
     var body: some View {
         NavigationView {
@@ -39,5 +39,5 @@ struct CalculatorInstructionsNavigationView: View {
 
 #Preview {
     CalculatorInstructionsNavigationView()
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }

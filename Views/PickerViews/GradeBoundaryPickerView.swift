@@ -9,9 +9,7 @@ import SwiftUI
 
 struct GradeBoundaryPickerView: View {
     
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
-    @Environment(GradeBoundaryViewerViewModel.self) var boundaryViewerViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
@@ -19,30 +17,30 @@ struct GradeBoundaryPickerView: View {
     
     var body: some View {
         VStack {
-            if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.extraSmall.screenWidth{
-                Text(subjectAndBoundaryPickerViewModel.boundaryText)
+            if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraSmall.screenWidth{
+                Text(AppStringsModel.init().boundaryText)
                     .font(Fonts.extraSmall.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
-            } else if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.standard.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.boundaryText)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.standard.screenWidth {
+                Text(AppStringsModel.init().boundaryText)
                     .font(Fonts.standard.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
-            } else if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.large.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.boundaryText)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.large.screenWidth {
+                Text(AppStringsModel.init().boundaryText)
                     .font(Fonts.large.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
-            } else if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.extraLarge.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.boundaryText)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraLarge.screenWidth {
+                Text(AppStringsModel.init().boundaryText)
                     .font(Fonts.extraLarge.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
             }
 
             Picker("", selection: $calculatorViewModel.selectedGradeBoundaryYear) {
-                ForEach(SubjectAndBoundaryPickerModel.init().gradeBoundaryYears, id: \.self) { years in
+                ForEach(AppStringsModel.init().gradeBoundaryYears, id: \.self) { years in
                     Text(years)
                 }
             }
-            .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
+            .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
             .accessibilityLabel("Select a grade boundary")
             .accessibilityAddTraits(.isHeader)
 

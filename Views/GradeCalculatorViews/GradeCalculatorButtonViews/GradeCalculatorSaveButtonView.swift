@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct GradeCalculatorSaveButtonView: View {
-    @EnvironmentObject private var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject private var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(\.modelContext) private var context
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
@@ -63,6 +63,6 @@ struct GradeCalculatorSaveButtonView: View {
 
 #Preview {
     GradeCalculatorSaveButtonView()
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
 }

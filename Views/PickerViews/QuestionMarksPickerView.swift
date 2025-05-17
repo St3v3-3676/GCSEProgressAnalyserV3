@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QuestionMarksPickerView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
     var selectedMark: Binding<String>
@@ -36,6 +36,6 @@ struct QuestionMarksPickerView: View {
 #Preview {
     QuestionMarksPickerView(selectedMark: .constant(""))
         .environment(StudentDetailsSectionViewModel())
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }
 

@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct GradeBoundariesTemplateView: View {
-    
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
@@ -41,13 +38,13 @@ struct GradeBoundariesTemplateView: View {
                 
                 HStack {
                     GradeBoundariesRectangleView(
-                        font: gradeBoundaryViewModel.getContentFont(),
+                        font: FontUtilities.init().getContentFont(),
                         rectangleColour: Colours.blueScheme.colour,
                         textType: "content",
                         isKey: true)
                     
                     GradeBoundariesRectangleView(
-                        font: gradeBoundaryViewModel.getContentFont(),
+                        font: FontUtilities.init().getContentFont(),
                         rectangleColour: Colours.greenScheme.colour,
                         textType: "content",
                         isKey: false)
@@ -62,9 +59,7 @@ struct GradeBoundariesTemplateView: View {
     }
 #Preview {
     GradeBoundariesView()
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(SubjectAndBoundaryPickerViewModel())
   

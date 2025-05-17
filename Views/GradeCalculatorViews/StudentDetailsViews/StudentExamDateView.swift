@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct StudentExamDateView: View {
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewModel
     var body: some View {
         VStack {
             
@@ -47,8 +45,6 @@ struct StudentExamDateView: View {
 
 #Preview {
     StudentExamDateView()
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environment(GradeBoundaryViewerViewModel())
 }

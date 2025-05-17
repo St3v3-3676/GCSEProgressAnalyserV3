@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct StudentDetailsTargetGradeTextFieldView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
     @Bindable var studentSectionViewModel = StudentDetailsSectionViewModel()
@@ -18,15 +17,15 @@ struct StudentDetailsTargetGradeTextFieldView: View {
         ZStack {
             RoundedRectangleView(
                 colour: Colours.blueScheme.colour,
-                width: studentDetailsSectionViewModel.getLargeRectangleWidth(),
-                height: studentDetailsSectionViewModel.getRectangleHeight(),
-                heightMultiplier: studentDetailsSectionViewModel.getRectangleHeight())
+                width: RoundedRectanglesUtilities.init().getLargeRectangleWidth(),
+                height: RoundedRectanglesUtilities.init().getRectangleHeight(),
+                heightMultiplier: RoundedRectanglesUtilities.init().getRectangleHeight())
             
             TextField(
-                TextFieldPrompts.targetGradeTextFieldPrompt.promptText,
+                TextFieldPromptStrings.targetGradeTextFieldPrompt.promptText,
                 text: $studentSectionViewModel.enteredTargetGrade)
-                .font(studentDetailsSectionViewModel.getTextFieldFont())
-                .padding(.leading, studentDetailsSectionViewModel.getTextFieldLeadingPadding())
+                .font(FontUtilities.init().getTextFieldFont())
+                .padding(.leading, PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldPromptStrings.targetGradeTextFieldPrompt.promptText))
                 .keyboardType(.asciiCapable)
                 .scrollDismissesKeyboard(.automatic)
         }

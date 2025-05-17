@@ -12,9 +12,9 @@ struct GradeCalculatorStudentDetailsTextFieldLabel: View {
     let textFieldName: String
     
     var body: some View {
-        Label(studentDetailsSectionViewModel.getLableText(textFieldName: textFieldName),
-        systemImage: studentDetailsSectionViewModel.getLabelImage(labelImageName: textFieldName))
-            .font(studentDetailsSectionViewModel.getContentFont())
+        Label(AppStringUtilities.init().getLableText(textFieldName: textFieldName),
+        systemImage: AppStringUtilities.init().getLabelImage(labelImageName: textFieldName))
+            .font(FontUtilities.init().getContentFont())
     }
 }
 

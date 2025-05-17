@@ -9,7 +9,7 @@ import SwiftUI
 import LocalAuthentication
 
 struct AuthenticationView: View {
-    @EnvironmentObject private var calculatorFormViewModel: GradeCalculatorViewModel
+    @EnvironmentObject private var calculatorFormViewModel: CSGradeCalculatorViewModel
     @State private var isAuthenticated: Bool = false
     @State var darkModeEnabled: Bool = false
     @State private var message = "Please authenticate"

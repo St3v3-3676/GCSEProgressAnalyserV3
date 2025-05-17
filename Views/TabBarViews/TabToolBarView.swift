@@ -12,7 +12,7 @@ struct TabToolBarView: View {
     
     @Binding var darkModeEnabled: Bool
     
-    @EnvironmentObject var calculatorFormViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorFormViewModel: CSGradeCalculatorViewModel
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab(TabBarLabelTexts.homeTabText.labelText,  systemImage: Images.homeTabImageName.imageName, value: TabBarLabelTexts.homeTabText.labelText) {
@@ -47,6 +47,6 @@ struct TabToolBarView: View {
 }
 #Preview {
     TabToolBarView(darkModeEnabled: .constant(true))
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 
 }

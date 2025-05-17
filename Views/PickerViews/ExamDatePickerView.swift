@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ExamDatePickerView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
     @Bindable var studentSectionViewModel = StudentDetailsSectionViewModel()
@@ -17,7 +16,7 @@ struct ExamDatePickerView: View {
     var isMonthPicker: Bool
     
     var body: some View {
-        let font = appWideViewModel.getContentFont()
+        let font = FontUtilities.init().getContentFont()
         VStack {
             if isMonthPicker {
                 Text("Select a month exam was sat:")
@@ -26,7 +25,7 @@ struct ExamDatePickerView: View {
                     .padding(.top, 10)
                 
                 Picker("", selection: $studentSectionViewModel.selectedMonth) {
-                    ForEach(GradeCalculatorModel.init().months, id: \.self) { months in
+                    ForEach(AppStringsModel.init().months, id: \.self) { months in
                         Text(months)
                     }
                 }
@@ -40,7 +39,7 @@ struct ExamDatePickerView: View {
                         .padding(.top, 10)
                     
                 Picker("", selection: $studentSectionViewModel.selectedYear) {
-                    ForEach(SubjectAndBoundaryPickerModel.init().gradeBoundaryYears, id: \.self) { years in
+                    ForEach(AppStringsModel.init().gradeBoundaryYears, id: \.self) { years in
                             Text(years)
                         }
                     }
@@ -55,6 +54,5 @@ struct ExamDatePickerView: View {
 
 #Preview {
     ExamDatePickerView(isMonthPicker: false)
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }

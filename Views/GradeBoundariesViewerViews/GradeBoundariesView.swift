@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct GradeBoundariesView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
@@ -25,9 +23,7 @@ struct GradeBoundariesView: View {
 //Extra small screen preview
 #Preview {
     GradeBoundariesView()
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(SubjectAndBoundaryPickerViewModel())
 }

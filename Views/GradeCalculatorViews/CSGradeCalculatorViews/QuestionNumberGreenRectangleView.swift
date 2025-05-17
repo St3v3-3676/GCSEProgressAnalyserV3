@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct QuestionNumberGreenRectangleView: View {
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewModel
-    @EnvironmentObject var calculatorViewModel:  GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel:  CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
     let padding: Edge.Set = .leading, spacing: CGFloat = 45
@@ -97,8 +95,6 @@ struct QuestionNumberGreenRectangleView: View {
 
 #Preview {
     QuestionNumberGreenRectangleView(questionLabel: "Enter Q1 Marks:", questionNumber: 2, paperNumber: 1)
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
 }

@@ -28,7 +28,7 @@ enum TextFieldPaddingValues {
     
 }
 
-struct PaddingModel {
+struct PaddingModel  {
     let paddingValue: CGFloat = -10
     let paddingTopAlignment: Edge.Set = .top
     let paddingBottomAlignment: Edge.Set = .bottom
@@ -36,6 +36,9 @@ struct PaddingModel {
     let textFieldLeadingPadding: CGFloat = 50
     let textFieldLeadingPaddingExtraSmallAdjustment: CGFloat = 15
     
-    var textFieldAndLabelBottomPaddingValue = -5
+    let textFieldAndLabelBottomPaddingValue = -5
+    
+    let appToolsImageTopPadding: CGFloat = 50
     
 }
+

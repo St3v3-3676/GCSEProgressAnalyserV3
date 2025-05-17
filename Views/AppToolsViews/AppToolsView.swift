@@ -14,17 +14,14 @@ struct AppToolsView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                TitleView(viewTitle: ViewTitles.appToolsViewTitle.title)
-                
-                Image(systemName: AppToolsImages.toolsViewImage.imageName)
-                    .resizable()
-                    .foregroundStyle(Colours.blueScheme.colour)
-                    .frame(width: FrameWidths.appToolsImageWidth.width, height: FrameHeights.appToolsImageHeight.height)
+            AppToolsImageView()
+            
+            AppTitleView(text: "App Tools", textType: TextStringTypes.title.type)
+                .position(x: TitlePositionCoordinates.xCoordinate.coordinate, y: TitlePositionCoordinates.yCoordinate.coordinate)
                 VStack {
                     List {
                         NavigationLink(destination: AppToolsNavigationLinks.addStudentsAndClasses.destination) {
-                            Text(AppToolsNavigationLinkTitles.addStudentsAndClasses.title)
+                            Text(AppToolsNavigationLinkStrings.addStudentsAndClasses.title)
                                 .fontWeight(.bold)
                                 .font(.title)
                             Image(systemName: AppToolsImages.addStudentsAndClasses.imageName)
@@ -32,7 +29,7 @@ struct AppToolsView: View {
                                 .font(.largeTitle)
                         }
                         NavigationLink(destination: AppToolsNavigationLinks.studentResults.destination) {
-                            Text(AppToolsNavigationLinkTitles.studentResults.title)
+                            Text(AppToolsNavigationLinkStrings.studentResults.title)
                                 .fontWeight(.bold)
                                 .font(.title)
                             Image(systemName: AppToolsImages.studentResults.imageName)
@@ -41,7 +38,7 @@ struct AppToolsView: View {
                             
                         }
                         NavigationLink(destination: AppToolsNavigationLinks.gradeBoundaries.destination) {
-                            Text(AppToolsNavigationLinkTitles.gradeBoundaries.title)
+                            Text(AppToolsNavigationLinkStrings.gradeBoundaries.title)
                                 .fontWeight(.bold)
                                 .font(.title)
                             Image(systemName: AppToolsImages.gradeBoundaries.imageName)
@@ -49,7 +46,7 @@ struct AppToolsView: View {
                                 .font(.largeTitle)
                         }
                         NavigationLink(destination: AppToolsNavigationLinks.studentResults.destination) {
-                            Text(AppToolsNavigationLinkTitles.resultsAnalysis.title)
+                            Text(AppToolsNavigationLinkStrings.resultsAnalysis.title)
                                 .fontWeight(.bold)
                                 .font(.title)
                             Image(systemName: AppToolsImages.studentResults.imageName)
@@ -66,12 +63,10 @@ struct AppToolsView: View {
             }
         }
     }
-}
+
 #Preview {
     AppToolsView()
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(SubjectAndBoundaryPickerViewModel())
 

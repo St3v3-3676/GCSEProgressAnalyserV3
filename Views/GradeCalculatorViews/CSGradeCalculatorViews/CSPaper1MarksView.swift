@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct CSPaper1MarksView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
 
-    
     var body: some View {
         GeometryReader { geometry in
             TextAndRoundedRectangleView(
                 rectangleColour:Colours.blueScheme.colour,
                 rectangleType: "large",
-                text: GradeCalculatorModel.init().titleTextPaper1, textType: "title")
+                text: CSAppStringsModel.init().titleTextCSPaper1, textType: "title")
                 .position(x: geometry.frame(in: .global).midX, y: geometry.frame(in: .global).minY)
             
 //            QuestionNumberGreenRectangleView(
@@ -97,8 +95,6 @@ struct CSPaper1MarksView: View {
 
 #Preview {
     CSPaper1MarksView()
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
 }

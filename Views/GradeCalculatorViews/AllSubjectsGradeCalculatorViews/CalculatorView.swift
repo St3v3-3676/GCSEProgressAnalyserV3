@@ -9,11 +9,9 @@ import SwiftUI
 
 struct CalculatorView: View {
     
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewerViewModel
     
     var body: some View {
         let topPadding: CGFloat = -25
@@ -81,7 +79,7 @@ struct CalculatorView: View {
             
             }
             .onAppear() {
-                calculatorViewModel.setButtonText(textString: "Save")
+                //calculatorViewModel.setButtonText(textString: "Save")
             }
             
         }
@@ -95,7 +93,6 @@ struct CalculatorView: View {
     CalculatorView()
         .environment(SubjectAndBoundaryPickerViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environmentObject(GradeCalculatorViewModel())
-        .environment(AppWideViewModel())
-        .environment(GradeBoundaryViewerViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
+
 }

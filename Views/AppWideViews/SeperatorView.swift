@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct SeperatorView: View {
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewerViewModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    
+
     var body: some View {
         VStack {
             Rectangle()
-                .frame(width: appWideViewModel.getScreenWidth() / RectangleModel.init().sectionSeparatorWidthMultiplier, height: appWideViewModel.getScreenHeight() * RectangleModel.init().sectionSeparatorHeightMultiplier)
+                .frame(width: ScreenDimensionsUtilitites.init().getScreenWidth() / RectangleModel.init().sectionSeparatorWidthMultiplier, height: ScreenDimensionsUtilitites.init().getScreenHeight() * RectangleModel.init().sectionSeparatorHeightMultiplier)
         }
-        .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue + 20)
+        .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue + 20)
     }
 }
 

@@ -8,59 +8,41 @@
 import Foundation
 import SwiftUI
 
-class GradeCalculatorViewModel: ObservableObject, Identifiable {
-    var titleText: String = ViewTitles.gradeCalculatorViewTitle.title
+class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
+    var titleText: String = ViewTitleStrings.gradeCalculatorViewTitle.title
 
     @Published var selectedSubject = Subjects.cs.displayName
     @Published var selectedGradeBoundaryYear = "2024"
     @Published var gradeBoundaries: [Int:Int] = CSGradeBoundariesAndTotalMarksModel.init().gradeBoundaries2024
     
-    var sectionText: String = ""
-    var marksText: String = ""
-    
-    var buttonText: String = ""
-    
-    var resetButtonText: String = ""
-    
     //These are used to record the student marks entered in the form.
-    @Published var paper1Q1Marks: String = GradeCalculatorModel.init().paper1Q1Marks
-    @Published var paper1Q2Marks: String = GradeCalculatorModel.init().paper1Q2Marks
-    @Published var paper1Q3Marks: String = GradeCalculatorModel.init().paper1Q3Marks
-    @Published var paper1Q4Marks: String = GradeCalculatorModel.init().paper1Q4Marks
-    @Published var paper1Q5Marks: String = GradeCalculatorModel.init().paper1Q5Marks
+    @Published var paper1Q1Marks: String = CSGradeCalculatorModel.init().paper1Q1Marks
+    @Published var paper1Q2Marks: String = CSGradeCalculatorModel.init().paper1Q2Marks
+    @Published var paper1Q3Marks: String = CSGradeCalculatorModel.init().paper1Q3Marks
+    @Published var paper1Q4Marks: String = CSGradeCalculatorModel.init().paper1Q4Marks
+    @Published var paper1Q5Marks: String = CSGradeCalculatorModel.init().paper1Q5Marks
     
-    @Published var paper2Q1Marks: String = GradeCalculatorModel.init().paper2Q1Marks
-    @Published var paper2Q2Marks: String = GradeCalculatorModel.init().paper2Q2Marks
-    @Published var paper2Q3Marks: String = GradeCalculatorModel.init().paper2Q3Marks
-    @Published var paper2Q4Marks: String = GradeCalculatorModel.init().paper2Q4Marks
-    @Published var paper2Q5Marks: String = GradeCalculatorModel.init().paper2Q5Marks
-    @Published var paper2Q6Marks: String = GradeCalculatorModel.init().paper2Q6Marks
+    @Published var paper2Q1Marks: String = CSGradeCalculatorModel.init().paper2Q1Marks
+    @Published var paper2Q2Marks: String = CSGradeCalculatorModel.init().paper2Q2Marks
+    @Published var paper2Q3Marks: String = CSGradeCalculatorModel.init().paper2Q3Marks
+    @Published var paper2Q4Marks: String = CSGradeCalculatorModel.init().paper2Q4Marks
+    @Published var paper2Q5Marks: String = CSGradeCalculatorModel.init().paper2Q5Marks
+    @Published var paper2Q6Marks: String = CSGradeCalculatorModel.init().paper2Q6Marks
     
-    @Published var totalMarksP1: String = GradeCalculatorModel.init().totalMarksP1
-    @Published var totalMarksP2: String = GradeCalculatorModel.init().totalMarksP2
-    @Published var totalMarks: String = GradeCalculatorModel.init().totalMarks
-    @Published var grade: String = GradeCalculatorModel.init().grade
+    @Published var totalMarksP1: String = CSGradeCalculatorModel.init().totalMarksP1
+    @Published var totalMarksP2: String = CSGradeCalculatorModel.init().totalMarksP2
+    @Published var totalMarks: String = CSGradeCalculatorModel.init().totalMarks
+    @Published var grade: String = CSGradeCalculatorModel.init().grade
  
-    @Published var yearPickerText: String = GradeCalculatorModel.init().yearPickerText
-    @Published var resultsHeaderText: String = GradeCalculatorModel.init().resultsHeaderText
-    @Published var totalMarksP1Text: String = GradeCalculatorModel.init().totalMarksP1Text
-    @Published var totalMarksP2Text: String = GradeCalculatorModel.init().totalMarksP2Text
-    @Published var gradeText: String = GradeCalculatorModel.init().gradeText
+    @Published var yearPickerText: String = AppStringsModel.init().yearPickerText
+    @Published var resultsHeaderText: String = AppStringsModel.init().resultsHeaderText
+    @Published var totalMarksP1Text: String = CSAppStringsModel.init().totalMarksCSP1Text
+    @Published var totalMarksP2Text: String = CSAppStringsModel.init().totalMarksCSP2Text
+    @Published var gradeText: String = AppStringsModel.init().gradeText
     
     //**************************************************//
     //THESE ARE THE SUBPROGRAMS FOR THE GRADE CALCULATOR//
-    //**************************************************//    
-    func setButtonText(textString: String) {
-        self.buttonText = textString
-    }
-    
-    func setSectionText(textString: String) {
-        self.sectionText = textString
-    }
-    
-    func setMarksText(textString: String) {
-        self.marksText = textString
-    }
+    //**************************************************//   
     
     func getCSPaper1TotalMarks() -> [Int] {
         var paper1TotalQuestionMarks: [Int] = []
@@ -87,7 +69,7 @@ class GradeCalculatorViewModel: ObservableObject, Identifiable {
         return paper2TotalQuestionMarks
     }
     func insertStudentData() -> ResultsData {
-        let studentResult = ResultsData(id: UUID(), examMonth: StudentDetailsSectionViewModel.init().selectedMonth, examYear: GradeCalculatorModel.init().selectedYear, studentSurname: GradeCalculatorModel.init().enteredSurname, studentForename: GradeCalculatorModel.init().enteredFirstname, studentClassName: GradeCalculatorModel.init().enteredClassName, paper1Q1Marks: self.paper1Q1Marks, paper1Q2Marks: self.paper1Q2Marks, paper1Q3Marks: self.paper1Q3Marks, paper1Q4Marks: self.paper1Q4Marks, paper1Q5Marks: self.paper1Q5Marks, paper1TotalMarks: self.totalMarksP1, paper2Q1Marks: self.paper2Q1Marks, paper2Q2Marks: self.paper2Q2Marks, paper2Q3Marks: self.paper2Q3Marks, paper2Q4Marks: self.paper2Q4Marks, paper2Q5Marks: self.paper2Q5Marks, paper2Q6Marks: self.paper2Q6Marks, paper2TotalMarks: self.totalMarksP2, grade: self.grade)
+        let studentResult = ResultsData(id: UUID(), examMonth: StudentDetailsSectionViewModel.init().selectedMonth, examYear: CSGradeCalculatorModel.init().selectedYear, studentSurname: CSGradeCalculatorModel.init().enteredSurname, studentForename: CSGradeCalculatorModel.init().enteredFirstname, studentClassName: CSGradeCalculatorModel.init().enteredClassName, paper1Q1Marks: self.paper1Q1Marks, paper1Q2Marks: self.paper1Q2Marks, paper1Q3Marks: self.paper1Q3Marks, paper1Q4Marks: self.paper1Q4Marks, paper1Q5Marks: self.paper1Q5Marks, paper1TotalMarks: self.totalMarksP1, paper2Q1Marks: self.paper2Q1Marks, paper2Q2Marks: self.paper2Q2Marks, paper2Q3Marks: self.paper2Q3Marks, paper2Q4Marks: self.paper2Q4Marks, paper2Q5Marks: self.paper2Q5Marks, paper2Q6Marks: self.paper2Q6Marks, paper2TotalMarks: self.totalMarksP2, grade: self.grade)
         
         return studentResult
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StudentDetailsClassNameTextFieldView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
     @Bindable var studentSectionViewModel: StudentDetailsSectionViewModel
@@ -17,15 +17,15 @@ struct StudentDetailsClassNameTextFieldView: View {
         ZStack {
             RoundedRectangleView(
                 colour: Colours.blueScheme.colour,
-                width: studentDetailsSectionViewModel.getLargeRectangleWidth(),
-                height: studentDetailsSectionViewModel.getRectangleHeight(),
-                heightMultiplier: studentSectionViewModel.getRectangleHeight())
+                width: RoundedRectanglesUtilities.init().getLargeRectangleWidth(),
+                height: RoundedRectanglesUtilities.init().getRectangleHeight(),
+                heightMultiplier: RoundedRectanglesUtilities.init().getRectangleHeight())
             
             TextField(
-                TextFieldPrompts.classnameTextFieldPrompt.promptText,
+                TextFieldPromptStrings.classnameTextFieldPrompt.promptText,
                 text: $studentSectionViewModel.enteredClassName)
-                .font(studentDetailsSectionViewModel.getTextFieldFont())
-                .padding(.leading, studentDetailsSectionViewModel.getTextFieldLeadingPadding())
+                .font(FontUtilities.init().getTextFieldFont())
+                .padding(.leading, PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldPromptStrings.classnameTextFieldPrompt.promptText))
                 .keyboardType(.asciiCapable)
                 .scrollDismissesKeyboard(.automatic)
 

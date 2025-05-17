@@ -53,3 +53,24 @@ enum Images {
         }
     }
 }
+
+enum AppToolsImages {
+    case addStudentsAndClasses; case studentResults; case gradeBoundaries
+    case resultsAnalysis; case toolsViewImage
+    
+    var imageName: String {
+        switch self {
+        case .addStudentsAndClasses:
+            return "person.fill.checkmark"
+        case .studentResults:
+            return "graduationcap.fill"
+        case .gradeBoundaries:
+            return "chevron.up.forward.2"
+        case .resultsAnalysis:
+            return "chart.bar.xaxis.ascending"
+        case .toolsViewImage:
+            return "wrench.and.screwdriver"
+        }
+    }
+}
+

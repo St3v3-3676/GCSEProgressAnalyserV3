@@ -8,39 +8,38 @@
 import SwiftUI
 
 struct SubjectPickerView: View {
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
-    @Environment(AppWideViewModel.self) var appWideViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
     var body: some View {
         VStack {
-            if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.extraSmall.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.subjectText)
+            if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraSmall.screenWidth {
+                Text(AppStringsModel.init().subjectText)
                     .font(Fonts.extraSmall.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
-            } else if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.standard.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.subjectText)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.standard.screenWidth {
+                Text(AppStringsModel.init().subjectText)
                     .font(Fonts.standard.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
-            } else if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.large.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.subjectText)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.large.screenWidth {
+                Text(AppStringsModel.init().subjectText)
                     .font(Fonts.large.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
-            } else if appWideViewModel.getScreenWidth() <= PhoneScreenWidths.extraLarge.screenWidth {
-                Text(subjectAndBoundaryPickerViewModel.subjectText)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraLarge.screenWidth {
+                Text(AppStringsModel.init().subjectText)
                     .font(Fonts.extraLarge.contentFont)
-                    .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
+                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
             }
             
             
             Picker("", selection: $calculatorViewModel.selectedSubject) {
-                ForEach(SubjectAndBoundaryPickerModel.init().subjects, id: \.self) { subject in
+                ForEach(AppStringsModel.init().subjects, id: \.self) { subject in
                     Text(subject)
                 }
             }
             .accessibilityLabel("Select a subject")
             .accessibilityAddTraits(.isHeader)
         }
-        .padding(subjectAndBoundaryPickerViewModel.paddingBottomAlignment, subjectAndBoundaryPickerViewModel.paddingValue)
+        .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
     }
 }

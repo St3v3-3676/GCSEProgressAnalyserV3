@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftUICore
 
 struct RoundedRectangleView: View {
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    
     var colour: Color
     
     var width: CGFloat
@@ -21,7 +19,7 @@ struct RoundedRectangleView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(colour)
-                .frame(width: appWideViewModel.getScreenWidth() / width, height: height * heightMultiplier)
+                .frame(width: ScreenDimensionsUtilitites.init().getScreenWidth() / width, height: height * heightMultiplier)
                 .shadow(radius: 10)
         }
     }

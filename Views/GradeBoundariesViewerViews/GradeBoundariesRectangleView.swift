@@ -7,8 +7,7 @@
 import SwiftUI
 
 struct GradeBoundariesRectangleView : View {
-    @Environment(GradeBoundaryViewerViewModel.self) var gradeBoundaryViewModel
-    @EnvironmentObject var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     
     let font: Font
     let rectangleColour: Color
@@ -21,14 +20,14 @@ struct GradeBoundariesRectangleView : View {
             ZStack {
                 RoundedRectangleView(
                         colour: rectangleColour,
-                        width: gradeBoundaryViewModel.getVerticalRectangleWidth(),
-                        height: gradeBoundaryViewModel.getVerticalRectangleHeight(),
-                        heightMultiplier: gradeBoundaryViewModel.getRectangleHeight())
+                        width: RoundedRectanglesUtilities.init().getVerticalRectangleWidth(),
+                        height: RoundedRectanglesUtilities.init().getVerticalRectangleHeight(),
+                        heightMultiplier: RoundedRectanglesUtilities.init().getRectangleHeight())
 
                 Grid {
                     ForEach(calculatorViewModel.gradeBoundaries.sorted(by: { $0.key < $1.key }), id: \.key) { (key, value) in
                         Text(isKey ? "\(key)" : "\(value)")
-                            .font(gradeBoundaryViewModel.getContentFont())
+                            .font(FontUtilities.init().getContentFont())
                             .foregroundStyle(.appFontColours)
                     }
                 }

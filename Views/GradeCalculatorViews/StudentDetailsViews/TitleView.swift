@@ -17,14 +17,14 @@ struct TitleView: View {
             TextAndRoundedRectangleView(
                 rectangleColour: Colours.blueScheme.colour,
                 rectangleType: "large",
-                text: ViewTitles.studentDetailsSectionTitle.title,
+                text: ViewTitleStrings.studentDetailsSectionTitle.title,
                 textType: "title"
             )
         } else if viewTitle == "grade boundaries" {
             TextAndRoundedRectangleView(
                 rectangleColour: Colours.blueScheme.colour,
                 rectangleType: "medium",
-                text: ViewTitles.gradeBoundaryViewerTitle.title,
+                text: ViewTitleStrings.gradeBoundaryViewerTitle.title,
                 textType: "title"
             )
         }

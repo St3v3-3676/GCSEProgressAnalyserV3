@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GradeCalculatorResetButtonView: View {
-    @EnvironmentObject private var calculatorViewModel: GradeCalculatorViewModel
+    @EnvironmentObject private var calculatorViewModel: CSGradeCalculatorViewModel
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -54,5 +54,5 @@ struct GradeCalculatorResetButtonView: View {
 
 #Preview {
     GradeCalculatorResetButtonView()
-        .environmentObject(GradeCalculatorViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }

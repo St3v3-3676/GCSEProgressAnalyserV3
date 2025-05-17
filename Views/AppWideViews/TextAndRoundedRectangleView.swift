@@ -7,8 +7,6 @@
 import SwiftUI
 
 struct TextAndRoundedRectangleView: View {
-    @Environment(AppWideViewModel.self) var appWideViewModel
-    
     var rectangleColour: Color
     var rectangleType: String
     var text: String
@@ -19,51 +17,51 @@ struct TextAndRoundedRectangleView: View {
             if rectangleType == "small" {
                 RoundedRectangleView(
                     colour: rectangleColour,
-                    width: appWideViewModel.getSmallRectangleWidth(),
-                    height: appWideViewModel.getRectangleHeight(),
-                    heightMultiplier: appWideViewModel.getRectangleHeight())
+                    width: RoundedRectanglesUtilities.init().getSmallRectangleWidth(),
+                    height: RoundedRectanglesUtilities.init().getRectangleHeight(),
+                    heightMultiplier: RoundedRectanglesUtilities.init().getRectangleHeight())
                 
                 if textType == "title"  {
                     Text(text)
-                        .font(appWideViewModel.getTitleFont())
+                        .font(FontUtilities.init().getTitleFont())
                         .foregroundStyle(.appFontColours)
                 } else {
                     Text(text)
-                        .font(appWideViewModel.getContentFont())
+                        .font(FontUtilities.init().getContentFont())
                         .foregroundStyle(.appFontColours)
                 }
                 
             } else if rectangleType == "medium" {
                 RoundedRectangleView(
                     colour: rectangleColour,
-                    width: appWideViewModel.getMediumRectangleWidth(),
-                    height: appWideViewModel.getRectangleHeight(),
-                    heightMultiplier: appWideViewModel.getRectangleHeight())
+                    width: RoundedRectanglesUtilities.init().getMediumRectangleWidth(),
+                    height: RoundedRectanglesUtilities.init().getRectangleHeight(),
+                    heightMultiplier: RoundedRectanglesUtilities.init().getRectangleHeight())
                 
                 if textType == "title"  {
                     Text(text)
-                        .font(appWideViewModel.getTitleFont())
+                        .font(FontUtilities.init().getTitleFont())
                         .foregroundStyle(.appFontColours)
                 } else {
                     Text(text)
-                        .font(appWideViewModel.getContentFont())
+                        .font(FontUtilities.init().getContentFont())
                         .foregroundStyle(.appFontColours)
                 }
                 
             } else {
                 RoundedRectangleView(
                     colour: rectangleColour,
-                    width: appWideViewModel.getLargeRectangleWidth(),
-                    height: appWideViewModel.getRectangleHeight(),
-                    heightMultiplier: appWideViewModel.getRectangleHeight())
+                    width: RoundedRectanglesUtilities.init().getLargeRectangleWidth(),
+                    height: RoundedRectanglesUtilities.init().getRectangleHeight(),
+                    heightMultiplier: RoundedRectanglesUtilities.init().getRectangleHeight())
                 
                 if textType == "title"  {
                     Text(text)
-                        .font(appWideViewModel.getTitleFont())
+                        .font(FontUtilities.init().getTitleFont())
                             .foregroundStyle(.appFontColours)
                 } else {
                     Text(text)
-                        .font(appWideViewModel.getContentFont())
+                        .font(FontUtilities.init().getContentFont())
                             .foregroundStyle(.appFontColours)
                 }
             }
