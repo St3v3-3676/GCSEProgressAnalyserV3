@@ -14,7 +14,7 @@ struct StudentDetailsClassNameTextFieldView: View {
     @Bindable var studentSectionViewModel: StudentDetailsSectionViewModel
     
     var body: some View {
-        ZStack {
+        let extractedExpr: ZStack<TupleView<(RoundedRectangleView, some View)>> = ZStack {
             RoundedRectangleView(
                 colour: Colours.blueScheme.colour,
                 width: RoundedRectanglesUtilities.init().getLargeRectangleWidth(),
@@ -24,12 +24,13 @@ struct StudentDetailsClassNameTextFieldView: View {
             TextField(
                 TextFieldPromptStrings.classnameTextFieldPrompt.promptText,
                 text: $studentSectionViewModel.enteredClassName)
-                .font(FontUtilities.init().getTextFieldFont())
-                .padding(.leading, PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldPromptStrings.classnameTextFieldPrompt.promptText))
-                .keyboardType(.asciiCapable)
-                .scrollDismissesKeyboard(.automatic)
-
+            .font(FontUtilities.init().getTextFieldFont())
+            .padding(.leading, PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldPromptStrings.classnameTextFieldPrompt.promptText))
+            .keyboardType(.asciiCapable)
+            .scrollDismissesKeyboard(.automatic)
+            
         }
+        extractedExpr
     }
 }
 

@@ -9,19 +9,19 @@ import SwiftUI
 
 struct SettingsView: View {
     @Binding var darkModeEnabled: Bool
-
     var body: some View {
         NavigationStack {
-            AppTitleView(text: "Settings", textType: "title")
-            Toggle(isOn: $darkModeEnabled) {
-                Text(AppStringsModel.init().darkModeText)
-                    .font(FontUtilities.init().getContentFont())
-                    .padding(.leading, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
-                    
-      
+            VStack {
+                AppTitleView(text: "Settings", textType: "title")
+                
+                Toggle(isOn: $darkModeEnabled) {
+                    Text(AppStringsModel.init().darkModeText)
+                        .font(FontUtilities.init().getContentFont())
+                        .padding(.leading, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
+                }
+                .padding(.trailing, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
             }
-            .padding(.trailing, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
-            .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() * -0.3)
+            .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() / 15)
         }
     }
 }

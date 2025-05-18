@@ -9,6 +9,7 @@ import SwiftUI
 enum FrameWidths {
     case appToolsImageWidth
     case homeScreenLogoFrameWidth
+    case instructionsFrameWidth
     
     var width: CGFloat {
         switch self {
@@ -16,6 +17,8 @@ enum FrameWidths {
             return 200
         case .homeScreenLogoFrameWidth:
             return 500
+        case .instructionsFrameWidth:
+            return 330
         }
     }
 }

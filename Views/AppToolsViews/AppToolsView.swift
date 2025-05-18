@@ -20,7 +20,7 @@ struct AppToolsView: View {
                 .position(x: TitlePositionCoordinates.xCoordinate.coordinate, y: TitlePositionCoordinates.yCoordinate.coordinate)
                 VStack {
                     List {
-                        NavigationLink(destination: AppToolsNavigationLinks.addStudentsAndClasses.destination) {
+                        NavigationLink(destination: StudentsAndClassesView()) {
                             Text(AppToolsNavigationLinkStrings.addStudentsAndClasses.title)
                                 .fontWeight(.bold)
                                 .font(.title)
@@ -28,7 +28,7 @@ struct AppToolsView: View {
                                 .foregroundColor(.purple)
                                 .font(.largeTitle)
                         }
-                        NavigationLink(destination: AppToolsNavigationLinks.studentResults.destination) {
+                        NavigationLink(destination: CSStudentsResultsFilesView()) {
                             Text(AppToolsNavigationLinkStrings.studentResults.title)
                                 .fontWeight(.bold)
                                 .font(.title)
@@ -37,7 +37,7 @@ struct AppToolsView: View {
                             
                             
                         }
-                        NavigationLink(destination: AppToolsNavigationLinks.gradeBoundaries.destination) {
+                        NavigationLink(destination: GradeBoundariesView()) {
                             Text(AppToolsNavigationLinkStrings.gradeBoundaries.title)
                                 .fontWeight(.bold)
                                 .font(.title)

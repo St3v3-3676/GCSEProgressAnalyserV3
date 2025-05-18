@@ -32,7 +32,7 @@ struct PaddingModel  {
     let paddingValue: CGFloat = -10
     let paddingTopAlignment: Edge.Set = .top
     let paddingBottomAlignment: Edge.Set = .bottom
-
+    
     let textFieldLeadingPadding: CGFloat = 50
     let textFieldLeadingPaddingExtraSmallAdjustment: CGFloat = 15
     

@@ -120,25 +120,27 @@ enum AppToolsNavigationLinkStrings {
     }
 }
 
-enum CalculatorInstructionsStrings {
-    case instructions1; case instructions2; case instructions3; case instructions4; case instructions5; case instructions6; case instructions7
+enum CalculatorInstructionsStrings: CaseIterable {
+    case instructions1; case instructions2; case instructions3; case instructions4; case instructions5; case instructions6; case instructions7; case instructions8
     
     var instructiontext: String {
         switch self {
-        case .instructions1:
-            return "1. Select a subject. The corresponding marks section will appear."
         case .instructions2:
-            return "2. Select a year to use that year's grade boundaries."
+            return "1. Select a subject. The corresponding marks section will appear."
         case .instructions3:
-            return "3. Enter the students details."
+            return "2. Select a year to use that year's grade boundaries."
         case .instructions4:
-            return "4. Select marks for each question or section on each exam paper."
+            return "3. Enter the students details."
         case .instructions5:
-            return "5. Click the save button to save the student result."
+            return "4. Select marks for each question or section on each exam paper."
         case .instructions6:
-            return "Note: Calculator button will appear once all data is entered."
+            return "5. Click the save button to save the student result."
         case .instructions7:
+            return "Note: Calculator button will appear once all data is entered."
+        case .instructions8:
             return "Note: Use the reset button to clear the form."
+        case .instructions1:
+            return "How to use the grade calculator:"
         }
     }
 }
@@ -340,4 +342,8 @@ struct CSAppStringsModel {
     var CStotalMarksP1Label = "Total marks Paper 1:"
     var totalMarksCSP1Text: String = "Total marks for paper 1: "
     var totalMarksCSP2Text: String = "Total marks for paper 2: "
+    
+    func getAllInstructions() -> [String] {
+        return CalculatorInstructionsStrings.allCases.map {$0.instructiontext}
+    }
 }

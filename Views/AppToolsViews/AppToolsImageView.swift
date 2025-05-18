@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppToolsImageView: View {
-
+    let appToolsTopPadding: CGFloat = 30
     var body: some View {
         VStack {
             Image(systemName: AppToolsImages.toolsViewImage.imageName)
@@ -16,10 +16,11 @@ struct AppToolsImageView: View {
                 .font(FontUtilities.init().setImageFont())
                 .shadow( radius: ShadowRadiusValues.large.radiusValue)
         }
-        
+        .padding(.top, appToolsTopPadding)
     }
 }
 
 #Preview {
     AppToolsImageView()
+        .environment(SubjectAndBoundaryPickerViewModel())
 }

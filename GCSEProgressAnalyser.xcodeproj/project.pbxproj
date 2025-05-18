@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		F7C497C42D88BB6F000F72DF /* GCSEProgressAnalyser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GCSEProgressAnalyser.app; path = "/Users/stephenboyle/Downloads/GCSEProgressAnalyser-main/build/Debug-iphoneos/GCSEProgressAnalyser.app"; sourceTree = "<absolute>"; };
+		F77E64C22DD8B0020024EF09 /* GCSEProgressAnalyser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCSEProgressAnalyser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +75,7 @@
 				F7C497D72D88BB70000F72DF /* GCSEProgressAnalyserTests */,
 				F7C497E12D88BB70000F72DF /* GCSEProgressAnalyserUITests */,
 				F7E87BC42DD879E100972541 /* Utilities */,
+				F77E64C22DD8B0020024EF09 /* GCSEProgressAnalyser.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,7 +106,7 @@
 			packageProductDependencies = (
 			);
 			productName = GCSEProgressAnalyser;
-			productReference = F7C497C42D88BB6F000F72DF /* GCSEProgressAnalyser.app */;
+			productReference = F77E64C22DD8B0020024EF09 /* GCSEProgressAnalyser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

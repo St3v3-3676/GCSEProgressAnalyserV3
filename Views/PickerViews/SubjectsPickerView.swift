@@ -11,6 +11,14 @@ struct SubjectPickerView: View {
     @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
+    fileprivate func extractedFunc() -> Picker<Text, String, ForEach<[String], String, Text>> {
+        return Picker("", selection: $calculatorViewModel.selectedSubject) {
+            ForEach(AppStringsModel.init().subjects, id: \.self) { subject in
+                Text(subject)
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraSmall.screenWidth {
@@ -32,11 +40,8 @@ struct SubjectPickerView: View {
             }
             
             
-            Picker("", selection: $calculatorViewModel.selectedSubject) {
-                ForEach(AppStringsModel.init().subjects, id: \.self) { subject in
-                    Text(subject)
-                }
-            }
+            extractedFunc()
+            .tint(Color.accentColor)
             .accessibilityLabel("Select a subject")
             .accessibilityAddTraits(.isHeader)
         }

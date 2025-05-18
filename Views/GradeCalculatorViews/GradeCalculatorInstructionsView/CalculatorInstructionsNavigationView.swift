@@ -40,4 +40,6 @@ struct CalculatorInstructionsNavigationView: View {
 #Preview {
     CalculatorInstructionsNavigationView()
         .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(SubjectAndBoundaryPickerViewModel())
 }

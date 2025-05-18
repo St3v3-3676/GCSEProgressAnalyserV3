@@ -9,54 +9,27 @@ import SwiftUI
 
 struct GradeCalculatorInstructionsView: View {
     @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
+    @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
     var body: some View {
-       ZStack {
-            Text("Instructions")
-                    .font(.title)
-
-            Text("How to use the grade calculator:")
-                    .offset(y: 30)
+        VStack {
+            AppTitleView(text: "Grade Calculator Instructions", textType: "title")
+                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() / 13)
+            
+            VStack(alignment: .leading) {
+                ForEach(CSAppStringsModel.init().getAllInstructions(), id: \.self) { instruction in
+                    InstructionTextView(instruction: instruction)
+                }
+            }
+            .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2 ,y: ScreenDimensionsUtilitites.init().getScreenHeight() * -0.1)
         }
-        
-        ZStack {
-            Text(CalculatorInstructionsStrings.instructions1.instructiontext)
-
-                
-            Text(CalculatorInstructionsStrings.instructions2.instructiontext)
-
-            
-            Text(CalculatorInstructionsStrings.instructions3.instructiontext)
-         
-            
-            Text(CalculatorInstructionsStrings.instructions4.instructiontext)
-  
-            
-            Text(CalculatorInstructionsStrings.instructions5.instructiontext)
-
-            
-            Text(CalculatorInstructionsStrings.instructions6.instructiontext)
-
-            
-            Text(CalculatorInstructionsStrings.instructions7.instructiontext)
-
-            
-        }
-
-
-        
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: 350, height: 350)
-                .foregroundStyle(.gray).opacity(0.2)
-                .offset(y: -340)
-                
-        }
-        .shadow(color: .blue, radius: 15)
+        .background(Colours.blueScheme.colour.opacity(0.6))
     }
 }
 
 #Preview {
     GradeCalculatorInstructionsView()
         .environmentObject(CSGradeCalculatorViewModel())
+        .environment(SubjectAndBoundaryPickerViewModel())
+        .environment(StudentDetailsSectionViewModel())
 }

@@ -20,7 +20,7 @@ struct GradeBoundariesTemplateView: View {
                 AppTitleView(text: "Grade Boundaries Viewer", textType: "title")
                     
                 SubjectPickerView()
-                
+    
                 GradeBoundaryPickerView(selectedGradeBoundary: SubjectAndBoundaryPickerViewModel())
                 
                 TextAndRoundedRectangleView(
@@ -54,14 +54,13 @@ struct GradeBoundariesTemplateView: View {
                 calculatorViewModel.getGradeBoundaries()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .padding()
+            .padding(PaddingModel.init().paddingValue)
         }
     }
 #Preview {
-    GradeBoundariesView()
+    GradeBoundariesTemplateView(selectedSubject: SubjectAndBoundaryPickerViewModel(), selectedBoundaryYear: SubjectAndBoundaryPickerViewModel())
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(SubjectAndBoundaryPickerViewModel())
-  
 }
 
