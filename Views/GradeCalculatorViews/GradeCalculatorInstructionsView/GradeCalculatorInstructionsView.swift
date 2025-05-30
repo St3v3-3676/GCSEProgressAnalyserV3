@@ -8,28 +8,45 @@
 import SwiftUI
 
 struct GradeCalculatorInstructionsView: View {
-    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
-    @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
+    let opacity = 0.3
+    let horizontalSpacing: CGFloat = 5
+    let verticalSpacing: CGFloat = 20
+    let horizontalPadding: CGFloat = 15
+    let verticalPadding: CGFloat = 5
+    let vStackSpacing: CGFloat = 10
+    let instructions = CSAppStringsModel().getAllInstructions()
+
     var body: some View {
+        
         VStack {
-            AppTitleView(text: "Grade Calculator Instructions", textType: "title")
-                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() / 13)
+            AppTitleView(text: "Instructions")
             
-            VStack(alignment: .leading) {
-                ForEach(CSAppStringsModel.init().getAllInstructions(), id: \.self) { instruction in
-                    InstructionTextView(instruction: instruction)
+            VStack(alignment: .center, spacing: vStackSpacing) {
+                ForEach(Array(instructions.enumerated()), id: \.1) { index, instruction in
+                    InstructionRow(
+                        text: instruction,
+                        isNote: instruction.contains("Note:"),
+                        opacity: opacity,
+                        horizontalPadding: horizontalPadding,
+                        verticalPadding: verticalPadding,
+                        horizontalSpacing: horizontalSpacing,
+                        verticalSpacing: verticalSpacing
+                    )
+                    .transition(.opacity.combined(with: .slide))
+                    .animation(.easeInOut(duration: 0.3).delay(Double(index) * 0.1), value: instruction)
                 }
             }
-            .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2 ,y: ScreenDimensionsUtilitites.init().getScreenHeight() * -0.1)
+            
         }
-        .background(Colours.blueScheme.colour.opacity(0.6))
     }
 }
 
 #Preview {
     GradeCalculatorInstructionsView()
         .environmentObject(CSGradeCalculatorViewModel())
-        .environment(SubjectAndBoundaryPickerViewModel())
         .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }
+
+

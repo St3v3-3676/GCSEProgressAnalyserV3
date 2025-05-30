@@ -11,22 +11,23 @@ struct SettingsView: View {
     @Binding var darkModeEnabled: Bool
     var body: some View {
         NavigationStack {
-            VStack {
-                AppTitleView(text: "Settings", textType: "title")
+            GeometryReader { geometry in
                 
-                Toggle(isOn: $darkModeEnabled) {
-                    Text(AppStringsModel.init().darkModeText)
-                        .font(FontUtilities.init().getContentFont())
-                        .padding(.leading, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
+                let width = geometry.size.width
+                VStack {
+                    AppTitleView(text: "Settings")
+                    
+                    Toggle(isOn: $darkModeEnabled) {
+                        Text(AppStringsModel.init().darkModeText)
+                            .font(.system(size: width * Fonts.contentFont.widthMultiplier))
+                            .padding(.leading, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
+                    }
+                    .padding(.trailing, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
                 }
-                .padding(.trailing, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
             }
-            .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() / 15)
         }
     }
 }
 #Preview {
     SettingsView(darkModeEnabled: .constant(true))
-        .environmentObject(CSGradeCalculatorViewModel())
-        .environment(SubjectAndBoundaryPickerViewModel())
 }

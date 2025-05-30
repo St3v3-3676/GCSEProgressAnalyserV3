@@ -10,36 +10,29 @@ import SwiftUI
 struct CalculatorInstructionsNavigationView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var gradeCalculatorViewModel: CSGradeCalculatorViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
+    
+    let width = UIScreen.main.bounds.width
  
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                Text("Click for")
+                Text("Click for instructions")
                     .font(.caption)
-                    .padding(.bottom, 20)
-                Text("instructions")
-                    .font(.caption)
-                
+                    .padding(.top, 35)
+
                 NavigationLink(destination: GradeCalculatorInstructionsView()) {
                     Image("custom.questionmark.circle.light")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .symbolEffect(.bounce.down.wholeSymbol, options: .repeat(.periodic(delay: 5.0)))
-                        .padding(.bottom, 70)
-
                 }
-                
             }
-            
         }
-        .frame(maxHeight: 100)
     }
 }
+
 
 #Preview {
     CalculatorInstructionsNavigationView()
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environment(SubjectAndBoundaryPickerViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

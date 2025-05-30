@@ -15,4 +15,7 @@ struct ResultsAnalysisViews: View {
 
 #Preview {
     ResultsAnalysisViews()
+        .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

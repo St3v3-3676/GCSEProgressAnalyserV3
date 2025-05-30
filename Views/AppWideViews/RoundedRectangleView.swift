@@ -13,13 +13,11 @@ struct RoundedRectangleView: View {
     
     var width: CGFloat
     var height: CGFloat
-    var heightMultiplier: CGFloat
-
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(colour)
-                .frame(width: ScreenDimensionsUtilitites.init().getScreenWidth() / width, height: height * heightMultiplier)
+                .frame(width: width, height: height)
                 .shadow(radius: 10)
         }
     }

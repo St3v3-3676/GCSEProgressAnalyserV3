@@ -15,22 +15,15 @@ struct InstructionTextView: View {
         VStack {
             if instruction.contains("Note") {
                 Text(instruction)
-                    .padding(.horizontal)
-                    .foregroundStyle(.red)
-                    .fontWeight(.heavy)
-                    .padding(.leading, 10)
-                    .padding(.top, 10)
                     .multilineTextAlignment(.leading)
-                    .fontWeight(.medium)
+
             } else {
                 Text(instruction)
-                    .fontWeight(.medium)
-                    .padding(.leading, 10)
                     .multilineTextAlignment(.leading)
-                    .fontWeight(.medium)
+                    .font(.system(size: 18))
+                    .padding(.horizontal)
+                    
             }
-            
- 
         }
     }
 }

@@ -67,5 +67,7 @@ struct AuthenticationView: View {
 
 #Preview {
     AuthenticationView()
-
+        .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

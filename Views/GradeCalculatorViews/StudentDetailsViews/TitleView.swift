@@ -14,19 +14,9 @@ struct TitleView: View {
     
     var body: some View {
         if viewTitle == "student details" {
-            TextAndRoundedRectangleView(
-                rectangleColour: Colours.blueScheme.colour,
-                rectangleType: "large",
-                text: ViewTitleStrings.studentDetailsSectionTitle.title,
-                textType: "title"
-            )
+            TextAndRoundedRectangleView(text: ViewTitleStrings.studentDetailsSectionTitle.title, rectangleColour: Colours.blueScheme.colour)
         } else if viewTitle == "grade boundaries" {
-            TextAndRoundedRectangleView(
-                rectangleColour: Colours.blueScheme.colour,
-                rectangleType: "medium",
-                text: ViewTitleStrings.gradeBoundaryViewerTitle.title,
-                textType: "title"
-            )
+            TextAndRoundedRectangleView(text: ViewTitleStrings.gradeBoundaryViewerTitle.title, rectangleColour: Colours.blueScheme.colour)
         }
         
     }

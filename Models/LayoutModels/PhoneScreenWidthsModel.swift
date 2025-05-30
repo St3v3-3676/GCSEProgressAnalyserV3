@@ -6,8 +6,12 @@
 //
 import SwiftUI
 
-enum PhoneScreenWidths {
+enum PhoneScreenWidths: CaseIterable, Identifiable {
     case extraSmall; case standard; case large; case extraLarge
+    
+    var id: Self {
+        self
+    }
     
     var screenWidth: CGFloat {
         switch self {
@@ -20,5 +24,20 @@ enum PhoneScreenWidths {
         case .extraLarge:
             return 440
         }
+    }
+    
+    static func current() -> PhoneScreenWidths {
+        let width = UIScreen.main.bounds.width
+        switch width {
+        case ..<380:
+            return .extraSmall
+        case ..<410:
+            return .standard
+        case ..<440:
+            return .large
+        default:
+            return .extraLarge
+        }
+        
     }
 }

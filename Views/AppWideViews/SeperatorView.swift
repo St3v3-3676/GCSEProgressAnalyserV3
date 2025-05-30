@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SeperatorView: View {
-    @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
+    @Environment(GradeBoundarySelectionViewModel.self) var subjectAndBoundaryPickerViewModel
 
     var body: some View {
         VStack {

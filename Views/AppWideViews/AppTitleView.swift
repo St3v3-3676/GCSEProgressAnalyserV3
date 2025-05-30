@@ -9,16 +9,16 @@ import SwiftUI
 
 struct AppTitleView: View {
     var text: String
-    var textType: String
-    
+
     var body: some View {
         VStack {
             Text(text)
-                .frame(alignment: .center)
-                .font(FontUtilities.init().setTextFont(textType: textType))
-    
+                .font(.title)
+                .fontWeight(.bold)
+            
             SeperatorView()
         }
     }
 }
+
 

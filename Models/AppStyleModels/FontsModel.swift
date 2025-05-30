@@ -7,57 +7,20 @@
 import SwiftUI
 
 enum Fonts {
-    case extraSmall; case standard; case large; case extraLarge
+    case viewMainTitle; case sectionTitle; case contentFont; case textFieldFont; case imageFont
     
-    var titleFont : Font {
+    var widthMultiplier: CGFloat {
         switch self {
-        case .extraSmall:
-            return Font.system(size: 24, weight: .semibold)
-        case .standard:
-            return Font.system(size: 28, weight: .semibold)
-        case .large:
-            return Font.system(size: 29, weight: .semibold)
-        case .extraLarge:
-            return Font.system(size: 32, weight: .semibold)
-        }
-    }
-    
-    var contentFont : Font {
-        switch self {
-        case .extraSmall:
-            return Font.system(size: 22, weight: .regular)
-        case .standard:
-            return Font.system(size: 26, weight: .regular)
-        case .large:
-            return Font.system(size: 27, weight: .regular)
-        case .extraLarge:
-            return Font.system(size: 30, weight: .regular)
-        }
-    }
-    
-    var textFieldFont : Font {
-        switch self {
-        case .extraSmall:
-            return Font.system(size: 18, weight: .regular)
-        case .standard:
-            return Font.system(size: 22, weight: .regular)
-        case .large:
-            return Font.system(size: 24, weight: .regular)
-        case .extraLarge:
-            return Font.system(size: 26, weight: .regular)
-        }
-    }
-    
-    var imageFont : Font {
-        switch self {
-        case .extraSmall:
-            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .semibold)
-        case .standard:
-            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .regular)
-        case .large:
-            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .regular)
-        case .extraLarge:
-            return Font.system(size: ScreenDimensionsUtilitites.init().getScreenWidth() / 3, weight: .regular)
+        case .viewMainTitle:
+            return 0.075
+        case .sectionTitle:
+            return 0.07
+        case .contentFont:
+            return 0.06
+        case .textFieldFont:
+            return 0.06
+        case .imageFont:
+            return 0.05
         }
     }
 }

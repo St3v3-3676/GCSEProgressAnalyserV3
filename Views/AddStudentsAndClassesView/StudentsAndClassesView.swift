@@ -15,4 +15,7 @@ struct StudentsAndClassesView: View {
 
 #Preview {
     StudentsAndClassesView()
+        .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

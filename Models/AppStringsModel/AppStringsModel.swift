@@ -145,8 +145,11 @@ enum CalculatorInstructionsStrings: CaseIterable {
     }
 }
 
-enum CalculatorLabelStrings {
+enum CalculatorLabelStrings: String, CaseIterable, Identifiable {
+    
     case firstnameTextFieldLabel; case surnameTextFieldLabel; case classnameTextFieldLabel; case targetGradeTextFieldLabel
+    
+    var id: String {rawValue}
     
     var labelText: String {
         switch self {
@@ -179,9 +182,9 @@ enum TextFieldPromptStrings {
     }
 }
 
-enum TextFieldNames {
+enum TextFieldNames: CaseIterable {
     case firstnameTextFieldName; case surnameTextFieldName; case classnameTextFieldName; case targetGradeTextFieldName
-    
+
     var textFieldName: String {
         switch self {
         case .firstnameTextFieldName:

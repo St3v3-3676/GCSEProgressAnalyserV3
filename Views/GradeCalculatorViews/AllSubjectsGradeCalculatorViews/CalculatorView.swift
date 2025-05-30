@@ -8,79 +8,45 @@ import SwiftUI
 
 
 struct CalculatorView: View {
-    
-    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
-    @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
-    @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-    
     var body: some View {
-        let topPadding: CGFloat = -25
-        let instructionViewPadding: CGFloat = 5
-        
+
         NavigationStack {
             ScrollView {
-                VStack {
-                    AppTitleView(text: calculatorViewModel.titleText, textType: "title")
-                    
-                    CalculatorInstructionsNavigationView()
-                        .padding(.top, instructionViewPadding)
+                VStack(alignment: .center) {
+                    AppTitleView(text: "Grade Calculator")
                 }
-//                
-                VStack {
+                .frame(height: 50)
+                .padding(.top, 20)
+                
+                VStack(alignment: .center, spacing: 20) {
+                    CalculatorInstructionsNavigationView()
+        
                     SubjectPickerView()
                     
-                    GradeBoundaryPickerView(selectedGradeBoundary: SubjectAndBoundaryPickerViewModel())
-                        
+                    GradeBoundaryPickerView()
                     
                     CalculatorStudentDetailsView()
+                    
                     StudentExamDateView()
                     
+                    CSPaper1MarksView()
+                    
                 }
-                .padding(.top, topPadding)
-                
-                if calculatorViewModel.selectedSubject == "Computer Science" {
-                    VStack {
-                        CSPaper1MarksView()
-                            .padding(.bottom, topPadding)
-                        //CSPaper2MarksView()
-                    }
-                }
-                
+            }
 
-//                        
-//                        
-//                        VStack {
-//
-//                        }
-//                        .offset(x: -10, y: -130)
-//                    }
-//                }
-//                .offset(x: 10, y: -240)
-//                
-//                
-//                VStack {
-//                    GradeCalculatorStudentResultView()
-//                }
-//                .offset(y: -530)
-//                
-//                VStack {
-//                    GradeCalculatorSaveButtonView()
-//                        .offset(y: 30)
-//                }
-//                .offset(y: -530)
-//                
-//                VStack {
-//                    GradeCalculatorResetButtonView()
-//                }
-//                .offset(y: -500)
-//                
-//            }
-//            .scrollDismissesKeyboard(.immediately)
-            
-            }
-            .onAppear() {
-                //calculatorViewModel.setButtonText(textString: "Save")
-            }
+                    //                if calculatorViewModel.selectedSubject == "Computer Science" {
+                    //                    VStack {
+                    //                        CSPaper1MarksView()
+                    //                        //CSPaper2MarksView()
+                    //
+                    //
+                    //                    }
+                    //                    .onAppear() {
+                    //                        //calculatorViewModel.setButtonText(textString: "Save")
+                    //                    }
+                    //
+                    //                }
+                
             
         }
         
@@ -88,11 +54,12 @@ struct CalculatorView: View {
     
 }
 
-//Extra small screen preview
+
 #Preview {
     CalculatorView()
-        .environment(SubjectAndBoundaryPickerViewModel())
-        .environment(StudentDetailsSectionViewModel())
         .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
+    
 
 }

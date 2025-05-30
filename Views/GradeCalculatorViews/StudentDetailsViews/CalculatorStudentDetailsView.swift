@@ -9,41 +9,42 @@ import SwiftUI
 
 struct CalculatorStudentDetailsView: View {
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-
     @Environment(\.colorScheme) var colorScheme
     
-    @FocusState private var currentFocus: String?
+    private let textFieldXPositionMultiplier: CGFloat = 0.075
 
     var body: some View {
-        VStack {
-            TitleView(viewTitle: ViewNameStrings.studentDetails.viewName)
+        let width = PhoneScreenWidths.current().screenWidth
+        VStack(alignment: .center, spacing: 1) {
+            Text("Student Details")
+                .frame(maxWidth: width * 0.45)
+                .font(.title2)
+                .fontWeight(.semibold)
+                .background(RoundedRectangle(cornerRadius: 8).fill(Colours.blueScheme.colour))
+//            TextAndRoundedRectangleView(text: "Student Details", rectangleColour: Colours.blueScheme.colour
+//            )
+            .padding(.bottom, 15)
             
-            GradeCalculatorStudentDetailsTextFieldLabel(
-                textFieldName: TextFieldNames.firstnameTextFieldName.textFieldName)
-            .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName:TextFieldNames.firstnameTextFieldName.textFieldName)))
-            .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
+            Text("Enter the student's details:")
+                .padding(.bottom, 15)
             
-            StudentDetailsFirstnameTextFieldView(studentDetailsSection: StudentDetailsSectionViewModel())
-            
-            GradeCalculatorStudentDetailsTextFieldLabel(textFieldName: TextFieldNames.surnameTextFieldName.textFieldName)
-                .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldNames.surnameTextFieldName.textFieldName)))
-                .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
-            StudentDetailsSurnameTextFieldView()
-            
-            GradeCalculatorStudentDetailsTextFieldLabel(textFieldName: TextFieldNames.classnameTextFieldName.textFieldName)
-                .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldNames.classnameTextFieldName.textFieldName) ))
-                .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
-            
-            StudentDetailsClassNameTextFieldView(studentSectionViewModel: StudentDetailsSectionViewModel())
-            
-            GradeCalculatorStudentDetailsTextFieldLabel(textFieldName: TextFieldNames.targetGradeTextFieldName.textFieldName)
-                .padding(.trailing, CGFloat(PaddingUtilities.init().getTextFieldPaddingValue(textFieldName: TextFieldNames.targetGradeTextFieldName.textFieldName)))
-                .padding(.bottom, CGFloat(PaddingModel.init().textFieldAndLabelBottomPaddingValue))
-            
-            StudentDetailsTargetGradeTextFieldView()
-
-            
+            createLabelAndTextField()
         }
+    }
+    
+    fileprivate func createLabelAndTextField() -> some View {
+        return ForEach(TextFieldNames.allCases, id: \.self) { labelString in
+            VStack(alignment: .leading, spacing: 20) {
+                GradeCalculatorStudentDetailsTextFieldLabel(
+                    textFieldName: labelString.textFieldName)
+                .padding(.bottom, 15)
+                .padding(.leading, 30)
+                
+                StudentDetailsView(studentDetailsSection: studentDetailsSectionViewModel, textFieldName: labelString.textFieldName, xPaddingMultiplier: textFieldXPositionMultiplier)
+                    .frame(height: 5)
+            }
+        }
+
     }
 }
 
@@ -51,4 +52,5 @@ struct CalculatorStudentDetailsView: View {
     CalculatorStudentDetailsView()
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

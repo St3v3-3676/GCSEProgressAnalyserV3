@@ -14,60 +14,59 @@ struct AppToolsView: View {
     
     var body: some View {
         NavigationStack {
-            AppToolsImageView()
+            VStack(alignment: .center) {
+                AppTitleView(text: "App Tools")
+            }
             
-            AppTitleView(text: "App Tools", textType: TextStringTypes.title.type)
-                .position(x: TitlePositionCoordinates.xCoordinate.coordinate, y: TitlePositionCoordinates.yCoordinate.coordinate)
-                VStack {
-                    List {
-                        NavigationLink(destination: StudentsAndClassesView()) {
-                            Text(AppToolsNavigationLinkStrings.addStudentsAndClasses.title)
-                                .fontWeight(.bold)
-                                .font(.title)
-                            Image(systemName: AppToolsImages.addStudentsAndClasses.imageName)
-                                .foregroundColor(.purple)
-                                .font(.largeTitle)
-                        }
-                        NavigationLink(destination: CSStudentsResultsFilesView()) {
-                            Text(AppToolsNavigationLinkStrings.studentResults.title)
-                                .fontWeight(.bold)
-                                .font(.title)
-                            Image(systemName: AppToolsImages.studentResults.imageName)
-                                .font(.largeTitle)
-                            
-                            
-                        }
-                        NavigationLink(destination: GradeBoundariesView()) {
-                            Text(AppToolsNavigationLinkStrings.gradeBoundaries.title)
-                                .fontWeight(.bold)
-                                .font(.title)
-                            Image(systemName: AppToolsImages.gradeBoundaries.imageName)
-                                .foregroundColor(.purple)
-                                .font(.largeTitle)
-                        }
-                        NavigationLink(destination: AppToolsNavigationLinks.studentResults.destination) {
-                            Text(AppToolsNavigationLinkStrings.resultsAnalysis.title)
-                                .fontWeight(.bold)
-                                .font(.title)
-                            Image(systemName: AppToolsImages.studentResults.imageName)
-                                .foregroundColor(.purple)
-                                .font(.largeTitle)
-                        }
-                        
+            VStack {
+                AppToolsImageView()
+            }
+            
+            List {
+                NavigationLink(destination: StudentsAndClassesView()) {
+                    Text(AppToolsNavigationLinkStrings.addStudentsAndClasses.title)
+                        .fontWeight(.bold)
+                        .font(.title)
+                    Image(systemName: AppToolsImages.addStudentsAndClasses.imageName)
+                        .foregroundColor(.purple)
+                        .font(.largeTitle)
                     }
-                    .listStyle(.plain)
-                    .frame(height: 500)
-                    .offset(y: 100)
-                }
                 
+                    NavigationLink(destination: CSStudentsResultsFilesView()) {
+                        Text(AppToolsNavigationLinkStrings.studentResults.title)
+                            .fontWeight(.bold)
+                            .font(.title)
+                        Image(systemName: AppToolsImages.studentResults.imageName)
+                            .font(.largeTitle)
+                    }
+                
+                    NavigationLink(destination: GradeBoundariesView()) {
+                        Text(AppToolsNavigationLinkStrings.gradeBoundaries.title)
+                            .fontWeight(.bold)
+                            .font(.title)
+                        Image(systemName: AppToolsImages.gradeBoundaries.imageName)
+                            .foregroundColor(.purple)
+                            .font(.largeTitle)
+                    }
+                
+                    NavigationLink(destination: AppToolsNavigationLinks.studentResults.destination) {
+                        Text(AppToolsNavigationLinkStrings.resultsAnalysis.title)
+                            .fontWeight(.bold)
+                            .font(.title)
+                        Image(systemName: AppToolsImages.studentResults.imageName)
+                            .foregroundColor(.purple)
+                            .font(.largeTitle)
+                    }
+                }
+                .listStyle(.plain)
             }
         }
     }
+    
 
 #Preview {
     AppToolsView()
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environment(SubjectAndBoundaryPickerViewModel())
-
+        .environment(GradeBoundarySelectionViewModel())
 }

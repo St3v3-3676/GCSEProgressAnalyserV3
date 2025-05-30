@@ -16,4 +16,5 @@ class StudentDetailsSectionViewModel {
     var enteredSurname: String = ""
     var enteredClassName: String = ""
     var enteredTargetGrade: String = ""
+    
 }

@@ -46,11 +46,11 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
     
     func getCSPaper1TotalMarks() -> [Int] {
         var paper1TotalQuestionMarks: [Int] = []
-        if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2022" {
+        if SubjectPickerModel.init().selectedGradeBoundaryYear == "2022" {
             paper1TotalQuestionMarks = CSTotalMarks2022.paper1.totalMarks
-        } else if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2023" {
+        } else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2023" {
             paper1TotalQuestionMarks = CSTotalMarks2023.paper1.totalMarks
-        } else if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2024" {
+        } else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2024" {
             paper1TotalQuestionMarks = CSTotalMarks2024.paper1.totalMarks
         }
         
@@ -59,11 +59,11 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
     
     func getPaper2TotalMarks() -> [Int] {
         var paper2TotalQuestionMarks: [Int] = []
-        if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2022" {
+        if SubjectPickerModel.init().selectedGradeBoundaryYear == "2022" {
             paper2TotalQuestionMarks = CSTotalMarks2022.paper2.totalMarks
-        } else if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2023" {
+        } else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2023" {
             paper2TotalQuestionMarks = CSTotalMarks2023.paper2.totalMarks
-        } else if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2024" {
+        } else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2024" {
             paper2TotalQuestionMarks = CSTotalMarks2024.paper2.totalMarks
         }
         return paper2TotalQuestionMarks
@@ -129,7 +129,7 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
         var total = 0
         total += Int(self.totalMarksP1) ?? 0
         total += Int(totalMarksP2) ?? 0
-        if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2024" {
+        if SubjectPickerModel.init().selectedGradeBoundaryYear == "2024" {
             let gradeBoundaries = CSGradeBoundariesAndTotalMarksModel().gradeBoundaries2024
             if total >= gradeBoundaries[9]! {
                 grade = "9"
@@ -162,7 +162,7 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
                 grade = "U"
                 print(grade)
             }
-        }else if SubjectAndBoundaryPickerModel.init().selectedGradeBoundaryYear == "2023" {
+        }else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2023" {
             let gradeBoundaries = CSGradeBoundariesAndTotalMarksModel().gradeBoundaries2023
             if total >= gradeBoundaries[9]! {
                 grade = "9"

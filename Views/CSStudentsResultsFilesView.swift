@@ -35,4 +35,7 @@ struct CSStudentsResultsFilesView: View {
 #Preview {
     CSStudentsResultsFilesView()
         .modelContainer(for: ResultsData.self)
+        .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

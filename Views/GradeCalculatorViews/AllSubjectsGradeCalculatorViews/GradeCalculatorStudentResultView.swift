@@ -49,4 +49,6 @@ struct GradeCalculatorStudentResultView: View {
 #Preview {
     GradeCalculatorStudentResultView()
         .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

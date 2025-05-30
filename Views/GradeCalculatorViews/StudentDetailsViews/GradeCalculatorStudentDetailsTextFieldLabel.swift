@@ -9,12 +9,19 @@ import SwiftUI
 
 struct GradeCalculatorStudentDetailsTextFieldLabel: View {
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-    let textFieldName: String
     
+    let textFieldName: String
     var body: some View {
-        Label(AppStringUtilities.init().getLableText(textFieldName: textFieldName),
-        systemImage: AppStringUtilities.init().getLabelImage(labelImageName: textFieldName))
-            .font(FontUtilities.init().getContentFont())
+        GeometryReader { geometry in
+            let appStrings = AppStringUtilities(studentDetailsSection: studentDetailsSectionViewModel)
+            HStack {
+                Text(appStrings.getLableText(textFieldName: textFieldName))
+                    .font(.title3)
+
+                Image(systemName: appStrings.getLabelImage(labelImageName: textFieldName))
+            }
+        }
+        .frame(height: 20)
     }
 }
 

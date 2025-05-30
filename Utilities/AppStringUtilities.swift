@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct AppStringUtilities {
+    @Bindable var studentDetailsSection: StudentDetailsSectionViewModel
+    
     func getLableText(textFieldName: String) -> String {
         if textFieldName == "firstname" {
             return CalculatorLabelStrings.firstnameTextFieldLabel.labelText
@@ -28,6 +30,18 @@ struct AppStringUtilities {
             return Images.classNameTextFieldLabelImage.imageName
         } else {
             return Images.targetGradeTextFieldLabelImage.imageName
+        }
+    }
+    
+    func getEnteredStudentDetails(textFieldName: String) -> Binding<String> {
+        if textFieldName == "firstname" {
+            return $studentDetailsSection.enteredFirstname
+        } else if textFieldName == "surname" {
+            return $studentDetailsSection.enteredSurname
+        } else if textFieldName == "class name" {
+            return $studentDetailsSection.enteredClassName
+        } else {
+            return $studentDetailsSection.enteredTargetGrade
         }
     }
 }

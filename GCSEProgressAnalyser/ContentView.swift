@@ -16,7 +16,7 @@ struct ContentView: View {
         VStack {
             TabToolBarView(darkModeEnabled: $darkModeEnabled)
         }
-        .tint(Color.accent)
+        .tint(.accent)
         .preferredColorScheme(darkModeEnabled ? .dark : .light)
     }
 }
@@ -24,7 +24,7 @@ struct ContentView: View {
     ContentView()
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environment(SubjectAndBoundaryPickerViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }
 
 

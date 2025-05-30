@@ -6,7 +6,9 @@
 //
 
 import Foundation
-struct SubjectAndBoundaryPickerModel {
+import SwiftUI
+
+struct SubjectPickerModel {
     var selectedGradeBoundaryYear: String = "2024"
     var selectedSubject: String = "Computer Science"
     

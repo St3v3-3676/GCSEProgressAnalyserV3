@@ -9,21 +9,40 @@ import SwiftUI
 
 struct GradeBoundariesView: View {
     @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
-    @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
-    @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
     
     var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                GradeBoundariesTemplateView(selectedSubject: SubjectAndBoundaryPickerViewModel(), selectedBoundaryYear: SubjectAndBoundaryPickerViewModel())
+        let width = PhoneScreenWidths.current().screenWidth
+        VStack(alignment: .center, spacing: 20) {
+            AppTitleView(text: "Grade Boundaries Viewer")
+                .frame(height: 70)
+            
+            SubjectPickerView()
+                .frame(height: 40)
+            
+            GradeBoundaryPickerView()
+            
+            GroupBox(label: Label("\(calculatorViewModel.selectedSubject)" + " " + "\(calculatorViewModel.selectedGradeBoundaryYear)", systemImage: "arrow.up.arrow.down")
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.bottom, 5)
+                .font(.title2)
+                .fontWeight(.bold)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Colours.blueScheme.colour))) {
+                
+                GradeBoundariesGridView()
             }
+                .frame(maxWidth: width * 0.9)
+            
+        }
+        
+        .onChange(of: calculatorViewModel.selectedGradeBoundaryYear) {
+            calculatorViewModel.getGradeBoundaries()
         }
     }
 }
-//Extra small screen preview
+
 #Preview {
     GradeBoundariesView()
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
-        .environment(SubjectAndBoundaryPickerViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }

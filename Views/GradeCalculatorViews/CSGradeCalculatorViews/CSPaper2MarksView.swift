@@ -104,9 +104,7 @@ import SwiftUI
 
 //#Preview {
 //    CSPaper2MarksView()
-//        .environmentObject(GradeCalculatorViewModel())
-//        .environment(StudentDetailsSectionViewModel())
-//        .environment(AppWideViewModel())
-//        .environment(GradeBoundaryViewModel())
-//        .environment(CalculatorMarksSectionViewModel())
+//    .environmentObject(CSGradeCalculatorViewModel())
+//    .environment(StudentDetailsSectionViewModel())
+//    .environment(GradeBoundarySelectionViewModel())
 //}

@@ -27,7 +27,7 @@ enum HorizontalRectangleWidths {
     var mediumRectangle: CGFloat {
         switch self {
         case .extraSmallScreen:
-            return 1.7
+            return 1.4
         case .standardScreen:
             return 1.4
         case .largeScreen:
@@ -94,6 +94,7 @@ enum ShadowRadiusValues {
 }
 
 struct RectangleModel {
+    
     let rectangleHeight: CGFloat = 40
     
     let verticleRectangleWidth: CGFloat = 7

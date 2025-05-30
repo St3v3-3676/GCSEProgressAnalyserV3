@@ -8,43 +8,40 @@
 import SwiftUI
 
 struct SubjectPickerView: View {
-    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
-    @Environment(SubjectAndBoundaryPickerViewModel.self) var subjectAndBoundaryPickerViewModel
+    @EnvironmentObject var viewModel: CSGradeCalculatorViewModel
     
-    fileprivate func extractedFunc() -> Picker<Text, String, ForEach<[String], String, Text>> {
-        return Picker("", selection: $calculatorViewModel.selectedSubject) {
-            ForEach(AppStringsModel.init().subjects, id: \.self) { subject in
-                Text(subject)
-            }
-        }
+    init() {
+        print("SubjectPickerView loaded with viewModel")
     }
     
     var body: some View {
+        
+        
         VStack {
-            if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraSmall.screenWidth {
-                Text(AppStringsModel.init().subjectText)
-                    .font(Fonts.extraSmall.contentFont)
-                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
-            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.standard.screenWidth {
-                Text(AppStringsModel.init().subjectText)
-                    .font(Fonts.standard.contentFont)
-                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
-            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.large.screenWidth {
-                Text(AppStringsModel.init().subjectText)
-                    .font(Fonts.large.contentFont)
-                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
-            } else if ScreenDimensionsUtilitites.init().getScreenWidth() <= PhoneScreenWidths.extraLarge.screenWidth {
-                Text(AppStringsModel.init().subjectText)
-                    .font(Fonts.extraLarge.contentFont)
-                    .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
-            }
-            
-            
+            Text(AppStringsModel.init().subjectText)
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+                
             extractedFunc()
-            .tint(Color.accentColor)
-            .accessibilityLabel("Select a subject")
-            .accessibilityAddTraits(.isHeader)
+                
         }
+        .padding(.horizontal)
+        .onAppear {
+            print("SubjectPickerView got environment object: \(viewModel)")
+        }
+    }
+
+    
+    fileprivate func extractedFunc() -> ModifiedContent<some View, AccessibilityAttachmentModifier> {
+        return Picker("", selection: $viewModel.selectedSubject) {
+            ForEach(AppStringsModel.init().subjects, id: \.self) { years in
+                Text(years)
+            }
+        }
+        .tint(Colours.greenScheme.colour)
         .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+        .accessibilityLabel("Select a grade boundary")
+        .accessibilityAddTraits(.isHeader)
     }
 }

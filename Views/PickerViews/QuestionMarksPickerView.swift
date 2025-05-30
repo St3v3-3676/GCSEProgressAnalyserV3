@@ -35,7 +35,8 @@ struct QuestionMarksPickerView: View {
 
 #Preview {
     QuestionMarksPickerView(selectedMark: .constant(""))
-        .environment(StudentDetailsSectionViewModel())
         .environmentObject(CSGradeCalculatorViewModel())
+        .environment(StudentDetailsSectionViewModel())
+        .environment(GradeBoundarySelectionViewModel())
 }
 

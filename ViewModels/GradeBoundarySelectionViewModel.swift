@@ -9,8 +9,7 @@ import SwiftUI
 import Observation
 
 @Observable
-class SubjectAndBoundaryPickerViewModel {        
+class GradeBoundarySelectionViewModel {
     var selectedGradeBoundaryYear = "2024"
     var selectedSubject: String = "computer science"
 }
-
