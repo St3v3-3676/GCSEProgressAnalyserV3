@@ -85,41 +85,6 @@ enum ViewTitleStrings {
         }
     }
 }
-
-enum TitlePositionCoordinates {
-    case xCoordinate
-    case yCoordinate
-    
-    var coordinate: CGFloat {
-        switch self {
-        case .xCoordinate:
-            return ScreenDimensionsUtilitites.init().getScreenWidth() / 2
-        case .yCoordinate:
-            return ScreenDimensionsUtilitites.init().getScreenHeight() / 20
-        }
-    }
-}
-
-enum AppToolsNavigationLinkStrings {
-    case addStudentsAndClasses
-    case studentResults
-    case gradeBoundaries
-    case resultsAnalysis
-    
-    var title: String {
-        switch self {
-        case .addStudentsAndClasses:
-            return "Add Students & Classes"
-        case .studentResults:
-            return "Student Results"
-        case .gradeBoundaries:
-            return "Grade Boundaries"
-        case .resultsAnalysis:
-            return "Results Analysis"
-        }
-    }
-}
-
 enum CalculatorInstructionsStrings: CaseIterable {
     case instructions1; case instructions2; case instructions3; case instructions4; case instructions5; case instructions6; case instructions7; case instructions8
     
@@ -257,17 +222,17 @@ enum Subjects: String, CaseIterable {
         case .maths:
             return "Maths"
         case .physics:
-            return "Science (Physics)"
+            return "Physics"
         case .chemistry:
-            return "Science (Chemistry)"
+            return "Chemistry"
         case .biology:
-            return "Science (Biology)"
+            return "Biology"
         case .englishlanguage:
-            return "English Language"
+            return "English Lan"
         case .englishliterature:
-            return "English Literature"
+            return "English Lit"
         case .cs:
-            return "Computer Science"
+            return "CS"
         case .french:
             return "French"
         case .spanish:
@@ -289,30 +254,30 @@ enum Subjects: String, CaseIterable {
         case .btecsport:
             return "BTEC Sport"
         case .businessandenterprise:
-            return "Business & Enterprise"
+            return "Business"
         }
         
     }
 }
 
-enum QuestionLabelStrings {
+enum QuestionLabelStrings: CaseIterable {
     case questionLabel1; case questionLabel2; case questionLabel3; case questionLabel4; case questionLabel5
     case questionLabel6;
     
     var questionLabelText: String {
         switch self {
         case .questionLabel1:
-            return "Enter Q1 marks:"
+            return "Select Q1 total mark:"
         case .questionLabel2:
-            return "Enter Q2 marks:"
+            return "Select Q2 total mark:"
         case .questionLabel3:
-            return "Enter Q3 marks:"
+            return "Select Q3 total mark:"
         case .questionLabel4:
-            return "Enter Q4 marks:"
+            return "Select Q4 total mark:"
         case .questionLabel5:
-            return "Enter Q5 marks:"
+            return "Select Q5 total mark:"
         case .questionLabel6:
-            return "Enter Q6 marks:"
+            return "Select Q6 total mark:"
         }
     }
 }

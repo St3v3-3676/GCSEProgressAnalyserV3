@@ -17,30 +17,33 @@ struct StudentDetailsView: View {
     let xPaddingMultiplier: CGFloat
 
     var body: some View {
-        GeometryReader { geometry in
-            
-            let width = geometry.size.width
-            let fieldWidth = width * 0.85
-            let fieldHeight = width * 0.08
-            
-            ZStack(alignment: .center) {
-                RoundedRectangleView(
-                    colour: Colours.blueScheme.colour,
-                    width: fieldWidth,
-                    height: fieldHeight)
-                
-                TextField(
-                    "",
-                    text: AppStringUtilities(studentDetailsSection: studentDetailsSection).getEnteredStudentDetails(textFieldName: textFieldName))
-                    .font(.system(size: width * Fonts.textFieldFont.widthMultiplier))
-                    .padding(.leading)
-                    .keyboardType(.asciiCapable)
-                    .scrollDismissesKeyboard(.automatic)
-            }
-            .frame(width: fieldWidth, height: fieldHeight)
-            .padding(.leading, width * xPaddingMultiplier)
+        VStack {
+            Spacer()
         }
-        .frame(height: 60)
+//        GeometryReader { geometry in
+//            
+//            let width = geometry.size.width
+//            let fieldWidth = width * 0.85
+//            let fieldHeight = width * 0.08
+//            
+//            ZStack(alignment: .center) {
+//                RoundedRectangleView(
+//                    colour: Colours.blueScheme.colour,
+//                    width: fieldWidth,
+//                    height: fieldHeight)
+//                
+//                TextField(
+//                    "",
+//                    text: AppStringUtilities(studentDetailsSection: studentDetailsSection).getEnteredStudentDetails(textFieldName: textFieldName))
+//                    .font(.system(size: width * Fonts.textFieldFont.widthMultiplier))
+//                    .padding(.leading)
+//                    .keyboardType(.asciiCapable)
+//                    .scrollDismissesKeyboard(.automatic)
+//            }
+//            .frame(width: fieldWidth, height: fieldHeight)
+//            .padding(.leading, width * xPaddingMultiplier)
+//        }
+//        .frame(height: 60)
     }
         
 }

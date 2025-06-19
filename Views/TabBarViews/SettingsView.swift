@@ -10,22 +10,21 @@ import SwiftUI
 struct SettingsView: View {
     @Binding var darkModeEnabled: Bool
     var body: some View {
-        NavigationStack {
-            GeometryReader { geometry in
-                
-                let width = geometry.size.width
-                VStack {
-                    AppTitleView(text: "Settings")
-                    
-                    Toggle(isOn: $darkModeEnabled) {
-                        Text(AppStringsModel.init().darkModeText)
-                            .font(.system(size: width * Fonts.contentFont.widthMultiplier))
-                            .padding(.leading, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
-                    }
-                    .padding(.trailing, ScreenDimensionsUtilitites.init().getScreenWidth() * 0.1)
-                }
+        VStack {
+            DynamicTitleTextView(text: "Settings")
+                .padding(.top, -340)
+            
+            Toggle(isOn: $darkModeEnabled) {
+                Text(AppStringsModel.init().darkModeText)
+                    .font(.largeTitle)
+                    .padding(.leading)
             }
+            .padding(.top, -300)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background( LinearGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart.opacity(0.6), Color.newBackgroundColorGradientEnd.opacity(0.6)]), startPoint: .top, endPoint: .bottom)
+            .ignoresSafeArea())
+        .ignoresSafeArea()
     }
 }
 #Preview {

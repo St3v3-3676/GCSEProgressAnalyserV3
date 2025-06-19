@@ -10,39 +10,36 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         ZStack {
-            Image(Images.yellowLogo.imageName)
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .shadow(radius: ShadowRadiusValues.large.radiusValue)
-                .padding(10)
-                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() * 0.25)
- 
-            
-            
-            Image(Images.redLogo.imageName)
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .shadow(radius: ShadowRadiusValues.large.radiusValue)
-                .padding(10)
-                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenHeight() * 0.57)
+            LinearGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart, Color.white, Color.newBackgroundColorGradientEnd]), startPoint: .top, endPoint: .bottom)
+            ZStack {
+                Circle()
+                    .frame(height: 380)
+                    .foregroundStyle(Color.newBackgroundColorGradientEnd)
+                    .offset(y: -150)
+                    .shadow(radius: 10)
+                
+                Circle()
+                    .frame(height: 380)
+                    .foregroundStyle(Color.newBackgroundColourGradientStart)
+                    .offset(y: 150)
+                    .shadow(radius: 10)
+                
+                Image("AppLogoV5")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 380)
+                    .shadow(radius: 10)
+   
 
-            
-            Image(Images.appLogo.imageName)
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .shadow(radius: ShadowRadiusValues.large.radiusValue)
-                .padding(10)
-                .position(x: ScreenDimensionsUtilitites.init().getScreenWidth() / 2, y: ScreenDimensionsUtilitites.init().getScreenWidth() / 1.1)
-            
-
+            }
         }
+        .ignoresSafeArea()
     }
 }
+
 
 #Preview {
     HomeView()
         .environmentObject(CSGradeCalculatorViewModel())
 }
+

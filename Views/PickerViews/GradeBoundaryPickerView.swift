@@ -12,14 +12,21 @@ struct GradeBoundaryPickerView: View {
     
     var body: some View {
         VStack {
-            Text(AppStringsModel.init().boundaryText)
+            DynamicSubTitleTextView(text: AppStringsModel.init().boundaryText)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
-                
+        }
+        
+        HStack {
             extractedFunc()
-                
-            SeperatorView()
+                .padding(.trailing, -20)
+            
+            Image(systemName: "arrowshape.backward.fill")
+                .font(.largeTitle)
+                .foregroundStyle(.purple)
+            
+                .symbolEffect(.wiggle.clockwise.byLayer, options: .repeat(.periodic(delay: 2.0)))
         }
     }
     
@@ -29,7 +36,7 @@ struct GradeBoundaryPickerView: View {
                 Text(years)
             }
         }
-        .tint(Colours.greenScheme.colour)
+        .tint(.appFontColours)
         .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
         .accessibilityLabel("Select a grade boundary")
         .accessibilityAddTraits(.isHeader)

@@ -10,37 +10,44 @@ import SwiftUI
 struct SubjectPickerView: View {
     @EnvironmentObject var viewModel: CSGradeCalculatorViewModel
     
-    init() {
-        print("SubjectPickerView loaded with viewModel")
-    }
-    
+    @Environment(\.sizeCategory) var sizeCategory
+
     var body: some View {
-        
-        
         VStack {
-            Text(AppStringsModel.init().subjectText)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
-                
+            DynamicSubTitleTextView(text: "Select a subject:")
+        }
+        .padding(.bottom, -20)
+        
+        HStack {
             extractedFunc()
-                
+                .padding(.trailing, -30)
+ 
+            Image(systemName: "arrowshape.backward.fill")
+
+                .font(.largeTitle)
+                .foregroundStyle(.purple)
+                .symbolEffect(.wiggle.clockwise.byLayer, options: .repeat(.periodic(delay: 2.0)))
+            
+            
         }
-        .padding(.horizontal)
-        .onAppear {
-            print("SubjectPickerView got environment object: \(viewModel)")
-        }
+        .frame(maxWidth: .infinity)
     }
 
     
     fileprivate func extractedFunc() -> ModifiedContent<some View, AccessibilityAttachmentModifier> {
-        return Picker("", selection: $viewModel.selectedSubject) {
-            ForEach(AppStringsModel.init().subjects, id: \.self) { years in
-                Text(years)
+        return Picker(selection: $viewModel.selectedSubject) {
+            ForEach(AppStringsModel.init().subjects, id: \.self) { subjects in
+                Text(subjects)
+                    .truncationMode(.tail)
             }
+        } label: {
+            Image(systemName: "house")
         }
-        .tint(Colours.greenScheme.colour)
-        .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
+        .tint(.appFontColours)
+        .fontWeight(.bold)
+        .pickerStyle(MenuPickerStyle())
+        .background(Color.clear)
+        .padding(.horizontal)
         .accessibilityLabel("Select a grade boundary")
         .accessibilityAddTraits(.isHeader)
     }

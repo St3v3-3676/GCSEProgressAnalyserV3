@@ -20,7 +20,7 @@ struct GradeCalculatorInstructionsView: View {
     var body: some View {
         
         VStack {
-            AppTitleView(text: "Instructions")
+            DynamicTitleTextView(text: "Instructions")
             
             VStack(alignment: .center, spacing: vStackSpacing) {
                 ForEach(Array(instructions.enumerated()), id: \.1) { index, instruction in

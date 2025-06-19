@@ -13,7 +13,7 @@ struct CalculatorView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .center) {
-                    AppTitleView(text: "Grade Calculator")
+                    DynamicTitleTextView(text: "Grade Calculator")
                 }
                 .frame(height: 50)
                 .padding(.top, 20)

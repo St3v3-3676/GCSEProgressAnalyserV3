@@ -46,11 +46,6 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		F7E87BC42DD879E100972541 /* Utilities */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +69,6 @@
 				F7C497C62D88BB6F000F72DF /* GCSEProgressAnalyser */,
 				F7C497D72D88BB70000F72DF /* GCSEProgressAnalyserTests */,
 				F7C497E12D88BB70000F72DF /* GCSEProgressAnalyserUITests */,
-				F7E87BC42DD879E100972541 /* Utilities */,
 				F77E64C22DD8B0020024EF09 /* GCSEProgressAnalyser.app */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +94,6 @@
 				F7C497F22D88BB90000F72DF /* ViewModels */,
 				F7C497F32D88BBA8000F72DF /* Models */,
 				F7C497F42D88BBB4000F72DF /* DataModel */,
-				F7E87BC42DD879E100972541 /* Utilities */,
 			);
 			name = GCSEProgressAnalyser;
 			packageProductDependencies = (
@@ -117,7 +110,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					F7C497C32D88BB6F000F72DF = {
 						CreatedOnToolsVersion = 16.2;
@@ -225,6 +218,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -282,6 +276,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -290,8 +285,9 @@
 		F7C497E92D88BB70000F72DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ProgressAnalyserLogo;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GCSEProgressAnalyser/Preview Content\"";
@@ -323,8 +319,9 @@
 		F7C497EA2D88BB70000F72DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ProgressAnalyserLogo;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GCSEProgressAnalyser/Preview Content\"";

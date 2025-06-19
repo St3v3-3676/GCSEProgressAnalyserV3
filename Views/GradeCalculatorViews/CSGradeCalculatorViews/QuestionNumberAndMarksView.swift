@@ -15,13 +15,25 @@ struct QuestionNumberAndMarksView: View {
     
     var body: some View {
         let width = UIScreen.main.bounds.width
-        HStack {
-            Text(questionText)
-                .frame(maxWidth: width * 0.3)
-                .font(.title2)
-                .background(
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Colours.blueScheme.colour))  
+        VStack {
+            ForEach(QuestionLabelStrings.allCases, id: \.self) { questionLabelString in
+                
+                HStack {
+                    Text(questionLabelString.questionLabelText)
+                        .frame(maxWidth: width * 0.6)
+                        .font(.title2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Colours.blueScheme.colour))
+                    
+                    QuestionMarksPickerView()
+                }
+                .padding(.bottom, 5)
+                
+                
+                
+            }
+              
         }
 
     }
@@ -29,4 +41,6 @@ struct QuestionNumberAndMarksView: View {
 
 #Preview {
     QuestionNumberAndMarksView(questionText: "Q1 Mark:")
+        .environment(StudentDetailsSectionViewModel())
+        .environmentObject(CSGradeCalculatorViewModel())
 }

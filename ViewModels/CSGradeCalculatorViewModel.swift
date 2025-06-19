@@ -232,12 +232,19 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
     }
     
     func getGradeBoundaries() {
-        if selectedGradeBoundaryYear == "2024" && self.selectedSubject == "Computer Science"{
+        print("Enter")
+        if selectedGradeBoundaryYear == "2024" && self.selectedSubject == "CS"{
+            print("2024")
             self.gradeBoundaries =  CSGradeBoundariesAndTotalMarksModel().gradeBoundaries2024
-        } else if selectedGradeBoundaryYear == "2023" && self.selectedSubject == "Computer Science"{
+            print(self.gradeBoundaries)
+        } else if selectedGradeBoundaryYear == "2023" && self.selectedSubject == "CS"{
+            print("2023")
             self.gradeBoundaries = CSGradeBoundariesAndTotalMarksModel().gradeBoundaries2023
-        } else if selectedGradeBoundaryYear == "2022" && self.selectedSubject == "Computer Science"{
+            print(self.gradeBoundaries)
+        } else if selectedGradeBoundaryYear == "2022" && self.selectedSubject == "CS"{
+            print("2022")
             self.gradeBoundaries = CSGradeBoundariesAndTotalMarksModel().gradeBoundaries2022
+            print(self.gradeBoundaries)
         }
     }
     

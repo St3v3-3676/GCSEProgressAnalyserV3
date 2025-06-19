@@ -21,12 +21,14 @@ struct DynamicSubTitleTextView: View {
                     .frame(width: .infinity)
                     .font(.title)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.appFontColours)
                     .lineLimit(3)
                     .multilineTextAlignment(.center)
             } else {
                 Text(text)
                     .font(.title)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.appFontColours)
                     .lineLimit(3)
                     .multilineTextAlignment(.center)
             }

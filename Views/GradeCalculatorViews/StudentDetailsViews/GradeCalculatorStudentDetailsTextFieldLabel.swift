@@ -7,21 +7,24 @@
 
 import SwiftUI
 
+
 struct GradeCalculatorStudentDetailsTextFieldLabel: View {
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     
     let textFieldName: String
     var body: some View {
         GeometryReader { geometry in
-            let appStrings = AppStringUtilities(studentDetailsSection: studentDetailsSectionViewModel)
             HStack {
-                Text(appStrings.getLableText(textFieldName: textFieldName))
+                Text(textFieldName)
                     .font(.title3)
 
-                Image(systemName: appStrings.getLabelImage(labelImageName: textFieldName))
+                Image(systemName: "house")
             }
         }
         .frame(height: 20)
     }
 }
+
+
+
 

@@ -11,13 +11,11 @@ struct CalculatorStudentDetailsView: View {
     @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     @Environment(\.colorScheme) var colorScheme
     
-    private let textFieldXPositionMultiplier: CGFloat = 0.075
-
     var body: some View {
-        let width = PhoneScreenWidths.current().screenWidth
+
         VStack(alignment: .center, spacing: 1) {
             Text("Student Details")
-                .frame(maxWidth: width * 0.45)
+                .frame(maxWidth: .infinity)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .background(RoundedRectangle(cornerRadius: 8).fill(Colours.blueScheme.colour))
@@ -40,7 +38,7 @@ struct CalculatorStudentDetailsView: View {
                 .padding(.bottom, 15)
                 .padding(.leading, 30)
                 
-                StudentDetailsView(studentDetailsSection: studentDetailsSectionViewModel, textFieldName: labelString.textFieldName, xPaddingMultiplier: textFieldXPositionMultiplier)
+                StudentDetailsView(studentDetailsSection: studentDetailsSectionViewModel, textFieldName: labelString.textFieldName, xPaddingMultiplier: 0.5)
                     .frame(height: 5)
             }
         }

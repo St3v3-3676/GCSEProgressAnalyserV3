@@ -19,6 +19,14 @@ struct CSPaper1MarksView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
                 .background(RoundedRectangle(cornerRadius: 8).fill(Colours.blueScheme.colour))
+            
+            HStack {
+                Text(QuestionLabelStrings.questionLabel1.questionLabelText)
+                
+                QuestionMarksPickerView()
+
+            }
+            
         }
         .onChange(of: [calculatorViewModel.paper1Q1Marks, calculatorViewModel.paper1Q2Marks, calculatorViewModel.paper1Q3Marks, calculatorViewModel.paper1Q4Marks, calculatorViewModel.paper1Q5Marks]) {
             calculatorViewModel.calculateTotalMarksPaper1()

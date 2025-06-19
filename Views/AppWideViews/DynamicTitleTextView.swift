@@ -19,12 +19,14 @@ struct DynamicTitleTextView: View {
                 Text(text)
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .foregroundStyle(.appFontColours)
                     .lineLimit(nil)
                     .multilineTextAlignment(.center)
             } else {
                 Text(text)
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .foregroundStyle(.appFontColours)
                     .lineLimit(nil)
                     .multilineTextAlignment(.center)
             }

@@ -13,7 +13,7 @@ struct SeperatorView: View {
     var body: some View {
         VStack {
             Rectangle()
-                .frame(width: ScreenDimensionsUtilitites.init().getScreenWidth() / RectangleModel.init().sectionSeparatorWidthMultiplier, height: ScreenDimensionsUtilitites.init().getScreenHeight() * RectangleModel.init().sectionSeparatorHeightMultiplier)
+                .frame(width: 100, height: 2)
         }
         .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue + 20)
     }
