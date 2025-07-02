@@ -19,7 +19,9 @@ struct SettingsView: View {
                     .font(.largeTitle)
                     .padding(.leading)
             }
+            .tint(.purple)
             .padding(.top, -300)
+            .padding(.trailing)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background( LinearGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart.opacity(0.6), Color.newBackgroundColorGradientEnd.opacity(0.6)]), startPoint: .top, endPoint: .bottom)

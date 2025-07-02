@@ -8,50 +8,58 @@ import SwiftUI
 
 
 struct CalculatorView: View {
+    
+    let opacityValue = Double(0.6)
+    let paddingValue = CGFloat(10)
+    @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
+    
     var body: some View {
-
         NavigationStack {
             ScrollView {
-                VStack(alignment: .center) {
-                    DynamicTitleTextView(text: "Grade Calculator")
-                }
-                .frame(height: 50)
-                .padding(.top, 20)
+                DynamicTitleTextView(text: "Grade Calculator")
+                    .padding(.bottom, paddingValue)
                 
-                VStack(alignment: .center, spacing: 20) {
-                    CalculatorInstructionsNavigationView()
-        
-                    SubjectPickerView()
-                    
-                    GradeBoundaryPickerView()
-                    
-                    CalculatorStudentDetailsView()
-                    
-                    StudentExamDateView()
-                    
-                    CSPaper1MarksView()
-                    
+                CalculatorInstructionsNavigationView()
+                    .padding(.bottom, paddingValue)
+                
+                Divider()
+                    .frame(height: 2)
+                    .background(Color.black)
+                
+                SubjectPickerView()
+                    .padding(.bottom, paddingValue)
+                
+                GradeBoundaryPickerView()
+                
+                Divider()
+                    .frame(height: 2)
+                    .background(Color.black)
+                
+                CalculatorStudentDetailsView(studentDetails: studentDetailsSectionViewModel)
+                    .padding(.bottom, paddingValue)
+                
+                Divider()
+                    .frame(height: 2)
+                    .background(Color.black)
+                    .padding(.bottom, paddingValue)
+                
+                StudentExamDateView()
+                    .padding(.bottom, paddingValue)
+                
+                if calculatorViewModel.selectedSubject == "CS" {
+                    CSCalculatorMarksFormView()
                 }
             }
-
-                    //                if calculatorViewModel.selectedSubject == "Computer Science" {
-                    //                    VStack {
-                    //                        CSPaper1MarksView()
-                    //                        //CSPaper2MarksView()
-                    //
-                    //
-                    //                    }
-                    //                    .onAppear() {
-                    //                        //calculatorViewModel.setButtonText(textString: "Save")
-                    //                    }
-                    //
-                    //                }
+            .background( LinearGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart.opacity(opacityValue), Color.newBackgroundColorGradientEnd.opacity(opacityValue)]), startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea())
+            .onChange(of: [calculatorViewModel.paper1Q1Marks, calculatorViewModel.paper1Q2Marks, calculatorViewModel.paper1Q3Marks, calculatorViewModel.paper1Q4Marks, calculatorViewModel.paper1Q5Marks, calculatorViewModel.paper2Q1Marks, calculatorViewModel.paper2Q2Marks, calculatorViewModel.paper2Q3Marks, calculatorViewModel.paper2Q4Marks, calculatorViewModel.paper2Q5Marks, calculatorViewModel.paper2Q6Marks]) {
                 
-            
+                calculatorViewModel.calculateTotalMarks()
+                calculatorViewModel.calculateGrade(year: calculatorViewModel.selectedGradeBoundaryYear)
+            }
         }
-        
     }
-    
 }
 
 

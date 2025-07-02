@@ -8,47 +8,77 @@
 import SwiftUI
 
 struct CalculatorStudentDetailsView: View {
-    @Environment(StudentDetailsSectionViewModel.self) var studentDetailsSectionViewModel
     @Environment(\.colorScheme) var colorScheme
     
-    var body: some View {
-
-        VStack(alignment: .center, spacing: 1) {
-            Text("Student Details")
-                .frame(maxWidth: .infinity)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .background(RoundedRectangle(cornerRadius: 8).fill(Colours.blueScheme.colour))
-//            TextAndRoundedRectangleView(text: "Student Details", rectangleColour: Colours.blueScheme.colour
-//            )
-            .padding(.bottom, 15)
-            
-            Text("Enter the student's details:")
-                .padding(.bottom, 15)
-            
-            createLabelAndTextField()
-        }
-    }
+    @Bindable var studentDetails: StudentDetailsSectionViewModel
     
-    fileprivate func createLabelAndTextField() -> some View {
-        return ForEach(TextFieldNames.allCases, id: \.self) { labelString in
-            VStack(alignment: .leading, spacing: 20) {
-                GradeCalculatorStudentDetailsTextFieldLabel(
-                    textFieldName: labelString.textFieldName)
-                .padding(.bottom, 15)
-                .padding(.leading, 30)
-                
-                StudentDetailsView(studentDetailsSection: studentDetailsSectionViewModel, textFieldName: labelString.textFieldName, xPaddingMultiplier: 0.5)
-                    .frame(height: 5)
-            }
+    let titlePaddingValue: CGFloat = 30
+    let bottomPaddingValue: CGFloat = 15
+    let textFieldColourOpacity: Double = 0.4
+    let textFieldCornerRadius: CGFloat = 10
+    let textFieldPaddingValue: CGFloat = 15
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            DynamicTitleTextView(text: "Student Details")
+                .padding(.bottom, titlePaddingValue)
+            
+            DynamicSubTitleTextView(text: "Enter the student's details:")
+                .font(.headline)
+                .fontWeight(.semibold)
+                .padding(.bottom, bottomPaddingValue)
         }
+        
+        VStack(alignment: .leading) {
+ 
+            GradeCalculatorStudentDetailsTextFieldLabel(
+                textFieldName: "First name")
+            .padding(.leading, textFieldPaddingValue)
+            
+            
+            
+            TextField("", text: $studentDetails.enteredFirstname, prompt: Text(TextFieldPromptStrings.firstnameTextFieldPrompt.promptText))
+                .background(RoundedRectangle(cornerRadius: textFieldCornerRadius).fill(Color.gray.opacity(textFieldColourOpacity)))
+                .font(.title3)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            
+            GradeCalculatorStudentDetailsTextFieldLabel(
+                textFieldName: "Surname")
+            .padding(.leading, textFieldPaddingValue)
+            
+            
+            TextField("", text: $studentDetails.enteredSurname, prompt: Text(TextFieldPromptStrings.surnameTextFieldPrompt.promptText).font(.headline))
+                .background(RoundedRectangle(cornerRadius: textFieldCornerRadius).fill(Color.gray.opacity(textFieldColourOpacity)))
+                .font(.title3)
+                .frame(maxWidth: .infinity, alignment: .center)
 
+            GradeCalculatorStudentDetailsTextFieldLabel(
+                textFieldName: "Class name")
+            .padding(.leading, textFieldPaddingValue)
+            
+            
+            TextField("", text: $studentDetails.enteredClassName, prompt: Text(TextFieldPromptStrings.classnameTextFieldPrompt.promptText).font(.headline))
+                .background(RoundedRectangle(cornerRadius: textFieldCornerRadius).fill(Color.gray.opacity(textFieldColourOpacity)))
+                .font(.title3)
+                .frame(maxWidth: .infinity, alignment: .center)
+
+            GradeCalculatorStudentDetailsTextFieldLabel(
+                textFieldName: "Target grade")
+            .padding(.leading, textFieldPaddingValue)
+            
+            
+            TextField("", text: $studentDetails.enteredTargetGrade, prompt: Text(TextFieldPromptStrings.targetGradeTextFieldPrompt.promptText).font(.headline))
+                .background(RoundedRectangle(cornerRadius: textFieldCornerRadius).fill(Color.gray.opacity(textFieldColourOpacity)))
+                .font(.title3)
+                .frame(maxWidth: .infinity, alignment: .center)
+        }
     }
 }
-
 #Preview {
-    CalculatorStudentDetailsView()
+    CalculatorStudentDetailsView(studentDetails: StudentDetailsSectionViewModel())
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(GradeBoundarySelectionViewModel())
 }
+

@@ -86,7 +86,7 @@ struct IndividualStudentResultDetailView: View {
 }
 
 #Preview {
-    IndividualStudentResultDetailView(studentResultDetail: ResultsData.init(id: UUID(), examMonth: "November", examYear: "2025", studentSurname: "Boyle", studentForename: "Stephen", studentClassName: "11A", paper1Q1Marks: "", paper1Q2Marks: "", paper1Q3Marks: "", paper1Q4Marks: "", paper1Q5Marks: "", paper1TotalMarks: "500", paper2Q1Marks: "100", paper2Q2Marks: "100", paper2Q3Marks: "100", paper2Q4Marks: "100", paper2Q5Marks: "100", paper2Q6Marks: "100", paper2TotalMarks: "500", grade: "9"))
+    IndividualStudentResultDetailView(studentResultDetail: ResultsData.init(id: UUID(), examMonth: "November", examYear: "2025", studentSurname: "Boyle", studentForename: "Stephen", studentClassName: "11A", targetGrade: "9", paper1Q1Marks: "", paper1Q2Marks: "", paper1Q3Marks: "", paper1Q4Marks: "", paper1Q5Marks: "", paper1TotalMarks: "500", paper2Q1Marks: "100", paper2Q2Marks: "100", paper2Q3Marks: "100", paper2Q4Marks: "100", paper2Q5Marks: "100", paper2Q6Marks: "100", paper2TotalMarks: "500", grade: "9"))
         .environmentObject(CSGradeCalculatorViewModel())
         .environment(StudentDetailsSectionViewModel())
         .environment(GradeBoundarySelectionViewModel())

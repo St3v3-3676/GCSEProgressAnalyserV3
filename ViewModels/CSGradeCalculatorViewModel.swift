@@ -46,12 +46,18 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
     
     func getCSPaper1TotalMarks() -> [Int] {
         var paper1TotalQuestionMarks: [Int] = []
-        if SubjectPickerModel.init().selectedGradeBoundaryYear == "2022" {
+        if self.selectedGradeBoundaryYear == "2022" {
             paper1TotalQuestionMarks = CSTotalMarks2022.paper1.totalMarks
-        } else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2023" {
+            print(paper1TotalQuestionMarks)
+            print("2022")
+        } else if self.selectedGradeBoundaryYear == "2023" {
             paper1TotalQuestionMarks = CSTotalMarks2023.paper1.totalMarks
-        } else if SubjectPickerModel.init().selectedGradeBoundaryYear == "2024" {
+            print(paper1TotalQuestionMarks)
+            print("2023")
+        } else if self.selectedGradeBoundaryYear == "2024" {
             paper1TotalQuestionMarks = CSTotalMarks2024.paper1.totalMarks
+            print(paper1TotalQuestionMarks)
+            print("2024")
         }
         
         return paper1TotalQuestionMarks
@@ -68,8 +74,9 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
         }
         return paper2TotalQuestionMarks
     }
+    
     func insertStudentData() -> ResultsData {
-        let studentResult = ResultsData(id: UUID(), examMonth: StudentDetailsSectionViewModel.init().selectedMonth, examYear: CSGradeCalculatorModel.init().selectedYear, studentSurname: CSGradeCalculatorModel.init().enteredSurname, studentForename: CSGradeCalculatorModel.init().enteredFirstname, studentClassName: CSGradeCalculatorModel.init().enteredClassName, paper1Q1Marks: self.paper1Q1Marks, paper1Q2Marks: self.paper1Q2Marks, paper1Q3Marks: self.paper1Q3Marks, paper1Q4Marks: self.paper1Q4Marks, paper1Q5Marks: self.paper1Q5Marks, paper1TotalMarks: self.totalMarksP1, paper2Q1Marks: self.paper2Q1Marks, paper2Q2Marks: self.paper2Q2Marks, paper2Q3Marks: self.paper2Q3Marks, paper2Q4Marks: self.paper2Q4Marks, paper2Q5Marks: self.paper2Q5Marks, paper2Q6Marks: self.paper2Q6Marks, paper2TotalMarks: self.totalMarksP2, grade: self.grade)
+        let studentResult = ResultsData(id: UUID(), examMonth: StudentDetailsSectionViewModel.init().selectedMonth, examYear: StudentDetailsSectionViewModel.init().selectedYear, studentSurname: StudentDetailsSectionViewModel.init().enteredSurname, studentForename: StudentDetailsSectionViewModel.init().enteredFirstname, studentClassName: StudentDetailsSectionViewModel.init().enteredClassName, targetGrade: StudentDetailsSectionViewModel.init().enteredTargetGrade, paper1Q1Marks: self.paper1Q1Marks, paper1Q2Marks: self.paper1Q2Marks, paper1Q3Marks: self.paper1Q3Marks, paper1Q4Marks: self.paper1Q4Marks, paper1Q5Marks: self.paper1Q5Marks, paper1TotalMarks: self.totalMarksP1, paper2Q1Marks: self.paper2Q1Marks, paper2Q2Marks: self.paper2Q2Marks, paper2Q3Marks: self.paper2Q3Marks, paper2Q4Marks: self.paper2Q4Marks, paper2Q5Marks: self.paper2Q5Marks, paper2Q6Marks: self.paper2Q6Marks, paper2TotalMarks: self.totalMarksP2, grade: self.grade)
         
         return studentResult
     }
@@ -273,4 +280,5 @@ class CSGradeCalculatorViewModel: ObservableObject, Identifiable {
 
 
     
+
 

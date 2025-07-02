@@ -21,7 +21,7 @@ struct GradeBoundariesGridView: View {
                             Image(systemName: "arrowshape.forward.fill")
                                 .padding(.leading, 30)
                                 .font(.title)
-                                .foregroundStyle(Color.purple)
+                                .foregroundStyle(Color.arrowColour)
                                 .fontWeight(.semibold)
                                 .padding(.trailing, 15)
 

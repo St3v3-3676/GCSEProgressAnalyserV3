@@ -24,7 +24,6 @@ struct InstructionRow: View {
                     .font(.title3)
                     .fontWeight(isNote ? .heavy : .semibold)
             }
-            .background(Colours.greenScheme.colour.opacity(opacity))
         }
     }
 }

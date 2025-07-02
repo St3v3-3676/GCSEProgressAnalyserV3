@@ -23,7 +23,7 @@ struct AppToolsView: View {
                             .fontWeight(.bold)
                             .font(.title)
                         Image(systemName: "graduationcap.fill")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.purple)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                     }
@@ -36,7 +36,7 @@ struct AppToolsView: View {
                             .fontWeight(.bold)
                             .font(.title)
                         Image(systemName: "chart.bar.yaxis")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.purple)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                     }
@@ -47,7 +47,7 @@ struct AppToolsView: View {
                             .fontWeight(.bold)
                             .font(.title)
                         Image(systemName: "9.square")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.purple)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                     }
@@ -58,7 +58,7 @@ struct AppToolsView: View {
                             .fontWeight(.bold)
                             .font(.title)
                         Image(systemName: "questionmark.text.page")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.purple)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                     }

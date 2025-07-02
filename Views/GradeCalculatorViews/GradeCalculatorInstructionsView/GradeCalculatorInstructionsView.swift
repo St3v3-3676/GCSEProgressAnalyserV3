@@ -19,10 +19,10 @@ struct GradeCalculatorInstructionsView: View {
 
     var body: some View {
         
-        VStack {
+        ScrollView {
             DynamicTitleTextView(text: "Instructions")
             
-            VStack(alignment: .center, spacing: vStackSpacing) {
+            VStack(alignment: .leading, spacing: vStackSpacing) {
                 ForEach(Array(instructions.enumerated()), id: \.1) { index, instruction in
                     InstructionRow(
                         text: instruction,
@@ -37,8 +37,8 @@ struct GradeCalculatorInstructionsView: View {
                     .animation(.easeInOut(duration: 0.3).delay(Double(index) * 0.1), value: instruction)
                 }
             }
-            
         }
+        .background(Color.newBackgroundColorGradientEnd)
     }
 }
 

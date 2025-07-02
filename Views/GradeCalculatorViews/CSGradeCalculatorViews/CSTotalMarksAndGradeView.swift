@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct CSTotalMarksAndGradeView: View {
+    @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("Total Marks:")
+                    .font(.title)
+                Text("\(calculatorViewModel.totalMarks)")
+                    .font(.title)
+                
+            }
+            
+            HStack {
+                Text("Grade:")
+                    .font(.title)
+                Text("\(calculatorViewModel.grade)")
+                    .font(.title)
+            }
+        }
     }
 }
 
 #Preview {
     CSTotalMarksAndGradeView()
+        .environmentObject(CSGradeCalculatorViewModel())
 }

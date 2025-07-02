@@ -24,7 +24,7 @@ struct ExamYearPickerView: View {
                 }
                 
                 Text("Selected year : \(studentSectionViewModel.selectedYear)")
-                    .foregroundStyle(.red)
+                    .foregroundStyle(.purpleFontColour)
                     .fontWeight(.semibold)
             }
             .padding(.bottom, 15)

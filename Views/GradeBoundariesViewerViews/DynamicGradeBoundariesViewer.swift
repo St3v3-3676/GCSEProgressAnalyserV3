@@ -12,7 +12,10 @@ struct DynamicGradeBoundariesViewer: View {
     @State private var isShowingGradeBoundariesSheet = false
     
     let paddingValue = CGFloat(15)
-    let opacityValue = Double(0.5)
+    let opacityValue = Double(0.6)
+    let sheetTitlePaddingValue = CGFloat(20)
+    let sheetInstructionPaddingValue = CGFloat(50)
+    
     
     var body: some View {
         ZStack {
@@ -31,30 +34,49 @@ struct DynamicGradeBoundariesViewer: View {
                 
                 Spacer()
                 
-                Button(action: { isShowingGradeBoundariesSheet = true }) {
-                    DynamicSubTitleTextView(text: "Click to View \n Boundaries")
-                        .padding(.horizontal, paddingValue)
-                        .padding(.vertical, paddingValue)
-                        .background(Color(.newBackgroundColourGradientStart).opacity(opacityValue))
-                        .clipShape(Capsule())
-                }
-                .onChange(of: gradeCalculatorViewModel.selectedGradeBoundaryYear) { _, _ in
-                    isShowingGradeBoundariesSheet = true
-                    gradeCalculatorViewModel.getGradeBoundaries()
+                if #available(iOS 26.0, *) {
+                    Button {
+                        isShowingGradeBoundariesSheet = true
+                    } label: {
+                        Text("Click to View \n Boundaries")
+                            .foregroundStyle(.appFontColours)
+                            .lineLimit(nil)
+                            .padding(.horizontal, paddingValue)
+                    }
+                    
+                    .onChange(of: gradeCalculatorViewModel.selectedGradeBoundaryYear) { _, _ in
+                        isShowingGradeBoundariesSheet = true
+                        gradeCalculatorViewModel.getGradeBoundaries()
+                    }
+                    .glassEffect()
+                    
+                } else {
+                    Button(action: { isShowingGradeBoundariesSheet = true }) {
+                        Text("Click to View \n Boundaries")
+                    }
+                    .onChange(of: gradeCalculatorViewModel.selectedGradeBoundaryYear) { _, _ in
+                        isShowingGradeBoundariesSheet = true
+                        gradeCalculatorViewModel.getGradeBoundaries()
+                    }
+                    .tint(.buttonTint)
+                    .backgroundStyle(Color.purple)
+                    .buttonBorderShape(.capsule)
+                    .buttonStyle(.bordered)
+                    
+                    //.background(Color.buttonBackgroundColour)
                 }
             }
-            .background( LinearGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart.opacity(0.6), Color.newBackgroundColorGradientEnd.opacity(0.6)]), startPoint: .top, endPoint: .bottom)
+            .background( LinearGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart.opacity(opacityValue), Color.newBackgroundColorGradientEnd.opacity(opacityValue)]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea())
             .sheet(isPresented: $isShowingGradeBoundariesSheet) {
                 DynamicTitleTextView(text: "Grade boundaries for \n \(gradeCalculatorViewModel.selectedSubject) \(gradeCalculatorViewModel.selectedGradeBoundaryYear)")
+                    .padding(.bottom,sheetTitlePaddingValue)
                 
                 GradeBoundariesGridView()
-                    .presentationBackground(RadialGradient(gradient: Gradient(colors: [Color.newBackgroundColourGradientStart, Color.newBackgroundColorGradientEnd, Color.blue]), center: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, startRadius: 0, endRadius: 1000).opacity(0.3))
-                
-                    
+                    .presentationBackground(Color.sheetBackgroundColour)
                 
                 DynamicSubTitleTextView(text: "Swipe down to dismiss")
-                    .padding(.top, 50)
+                    .padding(.top, sheetInstructionPaddingValue)
             }
         }
     }

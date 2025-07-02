@@ -17,6 +17,7 @@ class ResultsData: Identifiable {
     var studentSurname: String
     var studentForename: String
     var studentClassName: String
+    var targetGrade: String
     var paper1Q1Marks: String
     var paper1Q2Marks: String
     var paper1Q3Marks: String
@@ -32,7 +33,7 @@ class ResultsData: Identifiable {
     var paper2TotalMarks: String
     var grade: String
     
-    init(id:UUID ,examMonth: String, examYear: String, studentSurname: String, studentForename: String, studentClassName: String, paper1Q1Marks: String, paper1Q2Marks: String, paper1Q3Marks: String, paper1Q4Marks: String, paper1Q5Marks: String, paper1TotalMarks: String, paper2Q1Marks: String, paper2Q2Marks: String, paper2Q3Marks: String, paper2Q4Marks: String, paper2Q5Marks: String, paper2Q6Marks: String, paper2TotalMarks: String, grade: String) {
+    init(id:UUID ,examMonth: String, examYear: String, studentSurname: String, studentForename: String, studentClassName: String, targetGrade: String, paper1Q1Marks: String, paper1Q2Marks: String, paper1Q3Marks: String, paper1Q4Marks: String, paper1Q5Marks: String, paper1TotalMarks: String, paper2Q1Marks: String, paper2Q2Marks: String, paper2Q3Marks: String, paper2Q4Marks: String, paper2Q5Marks: String, paper2Q6Marks: String, paper2TotalMarks: String, grade: String) {
         
         self.id = id
         self.examMonth = examMonth
@@ -40,6 +41,7 @@ class ResultsData: Identifiable {
         self.studentSurname = studentSurname
         self.studentForename = studentForename
         self.studentClassName = studentClassName
+        self.targetGrade = targetGrade
         self.paper1Q1Marks = paper1Q1Marks
         self.paper1Q2Marks = paper1Q2Marks
         self.paper1Q3Marks = paper1Q3Marks

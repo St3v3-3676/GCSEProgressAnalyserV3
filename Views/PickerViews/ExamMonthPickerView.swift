@@ -22,8 +22,12 @@ struct ExamMonthPickerView: View {
             }
             
             Text("Selected month : \(studentSectionViewModel.selectedMonth)")
-                .foregroundStyle(.red)
+                .foregroundStyle(.purpleFontColour)
                 .fontWeight(.semibold)
+            
+            Divider()
+                .frame(height: 2)
+                .background(Color.black)
         }
         .padding(.bottom, 15)
     }

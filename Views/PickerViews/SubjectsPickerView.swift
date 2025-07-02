@@ -25,7 +25,7 @@ struct SubjectPickerView: View {
             Image(systemName: "arrowshape.backward.fill")
 
                 .font(.largeTitle)
-                .foregroundStyle(.purple)
+                .foregroundStyle(.arrowColour)
                 .symbolEffect(.wiggle.clockwise.byLayer, options: .repeat(.periodic(delay: 2.0)))
             
             

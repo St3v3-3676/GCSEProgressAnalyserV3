@@ -10,11 +10,10 @@ import Observation
 
 @Observable
 class StudentDetailsSectionViewModel {
-    var selectedMonth = CSGradeCalculatorModel.init().selectedMonth
-    var selectedYear = CSGradeCalculatorModel.init().selectedYear
+    var selectedMonth = ""
+    var selectedYear = ""
     var enteredFirstname: String = ""
     var enteredSurname: String = ""
     var enteredClassName: String = ""
     var enteredTargetGrade: String = ""
-    
 }

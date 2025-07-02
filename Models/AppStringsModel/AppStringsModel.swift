@@ -267,20 +267,38 @@ enum QuestionLabelStrings: CaseIterable {
     var questionLabelText: String {
         switch self {
         case .questionLabel1:
-            return "Select Q1 total mark:"
+            return "Q1 marks:"
         case .questionLabel2:
-            return "Select Q2 total mark:"
+            return "Q2 marks:"
         case .questionLabel3:
-            return "Select Q3 total mark:"
+            return "Q3 marks:"
         case .questionLabel4:
-            return "Select Q4 total mark:"
+            return "Q4 marks:"
         case .questionLabel5:
-            return "Select Q5 total mark:"
+            return "Q5 marks:"
         case .questionLabel6:
-            return "Select Q6 total mark:"
+            return "Q6 marks:"
         }
     }
 }
+
+enum StudentDetailsImageNames: CaseIterable {
+    case surname; case firstname; case classname; case targetgrade
+    
+    var imageName: String {
+        switch self {
+        case .surname:
+            return "person.fill"
+        case .firstname:
+            return "person.fill"
+        case .classname:
+            return "graduationcap.fill"
+        case .targetgrade:
+            return "9.square.fill"
+        }
+    }
+}
+
 struct AppStringsModel {
     var darkModeText = "Dark Mode On/Off"
     

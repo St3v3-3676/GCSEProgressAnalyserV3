@@ -24,7 +24,7 @@ struct GradeBoundaryPickerView: View {
             
             Image(systemName: "arrowshape.backward.fill")
                 .font(.largeTitle)
-                .foregroundStyle(.purple)
+                .foregroundStyle(.arrowColour)
             
                 .symbolEffect(.wiggle.clockwise.byLayer, options: .repeat(.periodic(delay: 2.0)))
         }
@@ -36,10 +36,15 @@ struct GradeBoundaryPickerView: View {
                 Text(years)
             }
         }
+        .onChange(of: viewModel.selectedGradeBoundaryYear) {
+            viewModel.calculateTotalMarks()
+            viewModel.calculateGrade(year: viewModel.selectedGradeBoundaryYear)
+        }
         .tint(.appFontColours)
         .padding(PaddingModel.init().paddingBottomAlignment, PaddingModel.init().paddingValue)
         .accessibilityLabel("Select a grade boundary")
         .accessibilityAddTraits(.isHeader)
+        
     }
 }
 

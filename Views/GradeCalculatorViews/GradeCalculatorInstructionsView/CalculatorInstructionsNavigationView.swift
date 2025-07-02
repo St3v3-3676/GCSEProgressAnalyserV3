@@ -12,18 +12,24 @@ struct CalculatorInstructionsNavigationView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var calculatorViewModel: CSGradeCalculatorViewModel
     
-    let width = UIScreen.main.bounds.width
- 
+    let titlePaddingValue = CGFloat(80)
+    
     var body: some View {
         NavigationStack {
-            ZStack {
-                Text("Click for instructions")
-                    .font(.caption)
-                    .padding(.top, 35)
+            HStack {
+                
 
                 NavigationLink(destination: GradeCalculatorInstructionsView()) {
-                    Image("custom.questionmark.circle.light")
+                    
+                    Text("Click for instructions")
+                        .font(.title3)
+                        .foregroundStyle(.black)
+                    
+                    Image(systemName: "questionmark.square.fill")
+                        .font(.title3)
+                        
                 }
+                
             }
         }
     }
